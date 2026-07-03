@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		66D3CB652FF8687F0051B9C1 /* HotwireNative in Frameworks */ = {isa = PBXBuildFile; productRef = 66D3CB642FF8687F0051B9C1 /* HotwireNative */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		66D3CB552FF83CDE0051B9C1 /* flipflapp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flipflapp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D3CB652FF8687F0051B9C1 /* HotwireNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "flipflapp-ios";
 			packageProductDependencies = (
+				66D3CB642FF8687F0051B9C1 /* HotwireNative */,
 			);
 			productName = "flipflapp-ios";
 			productReference = 66D3CB552FF83CDE0051B9C1 /* flipflapp-ios.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 66D3CB4C2FF83CDE0051B9C1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 66D3CB562FF83CDE0051B9C1 /* Products */;
 			projectDirPath = "";
@@ -332,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hotwired/hotwire-native-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66D3CB642FF8687F0051B9C1 /* HotwireNative */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */;
+			productName = HotwireNative;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66D3CB4D2FF83CDE0051B9C1 /* Project object */;
 }
