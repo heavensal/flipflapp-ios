@@ -1,13 +1,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    let container: AppContainer
+
     var body: some View {
-        HotwireRootView()
-            .ignoresSafeArea()
+        Group {
+            switch container.state {
+            case .idle:
+                ProgressView(String(localized: "Preparing FlipFlapp…"))
+            case let .failed(message):
+                ContentUnavailableView(
+                    String(localized: "Unable to start FlipFlapp"),
+                    systemImage: "exclamationmark.triangle",
+                    description: Text(message)
+                )
+            case let .ready(environment, session):
+                sessionRoot(environment: environment, session: session)
+            }
+        }
+        .task {
+            await container.start()
+        }
+    }
+
+    @ViewBuilder
+    private func sessionRoot(environment: AppEnvironment, session: SessionStore) -> some View {
+        switch session.state {
+        case .restoring:
+            ProgressView(String(localized: "Restoring your session…"))
+        case .signedOut:
+            AuthenticationRootView(
+                api: environment.api,
+                session: session,
+                initialMessage: session.restorationMessage
+            )
+        case let .signedIn(user):
+            SignedInRootView(environment: environment, session: session, currentUser: user)
+        }
     }
 }
-
-#Preview {
-    ContentView()
-}
-

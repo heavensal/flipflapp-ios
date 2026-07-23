@@ -2,7 +2,20 @@
 
 Native SwiftUI client for the FlipFlapp football-event MVP. The Rails application provides the `/api/v1` JSON API and remains authoritative for domain rules and authorization.
 
-The current app is an initial Hotwire Native shell. The target is a fully native SwiftUI application; follow [docs/HOTWIRE_MIGRATION.md](docs/HOTWIRE_MIGRATION.md).
+The runtime is fully native: a SwiftUI session root consumes every operation in the current OpenAPI contract through an actor-isolated `URLSession` client. Authentication tokens are stored in Keychain and no Rails HTML route is rendered.
+
+## Source layout
+
+| Folder | Responsibility |
+|---|---|
+| `App/` | Composition root, session state, tabs and shared badges |
+| `Core/API/` | HTTP transport, error mapping and the complete v1 operation surface |
+| `Core/Models/` | Typed resource identifiers and OpenAPI-aligned DTOs |
+| `Core/Security/` | Keychain-backed bearer token storage |
+| `Core/DesignSystem/` | Reusable native cards, loading states, avatars and status components |
+| `Features/` | Authentication, events, event details/editor, friendships, notifications and profiles |
+
+The obsolete Hotwire package reference is intentionally left in the Xcode project until the separately approved cleanup step described in [docs/HOTWIRE_MIGRATION.md](docs/HOTWIRE_MIGRATION.md). No app source imports or executes it.
 
 ## Documentation
 
