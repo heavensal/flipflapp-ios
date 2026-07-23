@@ -28,11 +28,22 @@ struct ContentView: View {
         switch session.state {
         case .restoring:
             ProgressView(String(localized: "Restoring your session…"))
+        case let .restorationFailed(message):
+            ContentUnavailableView {
+                Label(String(localized: "Unable to load"), systemImage: "wifi.exclamationmark")
+            } description: {
+                Text(message)
+            } actions: {
+                Button(String(localized: "Try again")) {
+                    Task { await session.restore() }
+                }
+                .buttonStyle(.borderedProminent)
+            }
         case .signedOut:
             AuthenticationRootView(
                 api: environment.api,
                 session: session,
-                initialMessage: session.restorationMessage
+                initialMessage: nil
             )
         case let .signedIn(user):
             SignedInRootView(environment: environment, session: session, currentUser: user)

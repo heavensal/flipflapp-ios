@@ -4,6 +4,7 @@ import OSLog
 
 enum SessionState: Sendable {
     case restoring
+    case restorationFailed(String)
     case signedOut
     case signedIn(CurrentUser)
 }
@@ -12,7 +13,6 @@ enum SessionState: Sendable {
 @Observable
 final class SessionStore {
     private(set) var state: SessionState = .restoring
-    private(set) var restorationMessage: String?
 
     private let api: APIClient
     private let tokenStore: any TokenStoring
@@ -30,7 +30,6 @@ final class SessionStore {
 
     func restore() async {
         state = .restoring
-        restorationMessage = nil
         do {
             guard try await tokenStore.readToken() != nil else {
                 state = .signedOut
@@ -41,8 +40,7 @@ final class SessionStore {
             try? await tokenStore.deleteToken()
             state = .signedOut
         } catch {
-            restorationMessage = error.localizedDescription
-            state = .signedOut
+            state = .restorationFailed(error.localizedDescription)
         }
     }
 

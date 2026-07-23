@@ -11,8 +11,10 @@ struct EventDraft {
     var isPrivate = true
     var latitude = ""
     var longitude = ""
+    private let requiresFutureStartTime: Bool
 
     init(event: Event? = nil) {
+        requiresFutureStartTime = event == nil
         guard let event else { return }
         title = event.title
         description = event.description ?? ""
@@ -29,7 +31,7 @@ struct EventDraft {
         guard
             !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
             !location.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
-            startTime > Date(),
+            !requiresFutureStartTime || startTime > Date(),
             numberOfParticipants > 0,
             let priceValue = parseDecimal(price),
             priceValue >= 0,

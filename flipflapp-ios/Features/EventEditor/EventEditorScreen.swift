@@ -35,7 +35,7 @@ struct EventEditorScreen: View {
                     DatePicker(
                         String(localized: "Kick-off"),
                         selection: $model.draft.startTime,
-                        in: Date()...,
+                        in: minimumStartTime...,
                         displayedComponents: [.date, .hourAndMinute]
                     )
                 }
@@ -92,5 +92,9 @@ struct EventEditorScreen: View {
                 }
             }
         }
+    }
+
+    private var minimumStartTime: Date {
+        event == nil ? Date() : .distantPast
     }
 }

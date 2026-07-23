@@ -42,5 +42,8 @@ struct SignedInRootView: View {
             }
         }
         .tint(.indigo)
+        .task {
+            await badges.load(api: environment.api, session: session)
+        }
     }
 }

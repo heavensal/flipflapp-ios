@@ -23,10 +23,10 @@ final class FriendsSearchModel {
             state = .empty
             return
         }
+        state = .loading
         do {
             try await Task.sleep(for: .milliseconds(300))
             guard !Task.isCancelled else { return }
-            state = .loading
             let users = try await api.searchFriendshipCandidates(query: value)
             guard value == query.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             state = users.isEmpty ? .empty : .loaded(users)
