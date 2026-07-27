@@ -8,8 +8,7 @@ nonisolated struct EventTeam: Codable, Hashable, Identifiable, Sendable {
 
         var systemImage: String {
             switch self {
-            case .teamOne: "shield.lefthalf.filled"
-            case .teamTwo: "shield.righthalf.filled"
+            case .teamOne, .teamTwo: "tshirt.fill"
             case .bench: "chair.lounge.fill"
             }
         }

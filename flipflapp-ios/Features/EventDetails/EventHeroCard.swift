@@ -1,3 +1,4 @@
+import MapKit
 import SwiftUI
 
 struct EventHeroCard: View {
@@ -20,13 +21,32 @@ struct EventHeroCard: View {
                     }
                 }
 
+                if let description = event.description, !description.isEmpty {
+                    Text(description)
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                        .textSelection(.enabled)
+                }
+
                 VStack(alignment: .leading, spacing: 10) {
                     Label {
                         Text(event.startTime, format: .dateTime.weekday(.wide).day().month(.wide).hour().minute())
                     } icon: {
                         Image(systemName: "calendar.badge.clock")
                     }
-                    Label(event.location, systemImage: "mappin.and.ellipse")
+
+                    Button(action: openInMaps) {
+                        Label {
+                            Text(event.location)
+                                .multilineTextAlignment(.leading)
+                        } icon: {
+                            Image(systemName: "mappin.and.ellipse")
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.tint)
+                    .accessibilityHint(String(localized: "Opens this address in Maps"))
+
                     Label {
                         Text(event.price, format: .currency(code: "EUR"))
                     } icon: {
@@ -46,5 +66,23 @@ struct EventHeroCard: View {
                 .tint(event.fillLevel == .full ? .orange : .indigo)
             }
         }
+    }
+
+    private func openInMaps() {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: NSDecimalNumber(decimal: event.latitude).doubleValue,
+            longitude: NSDecimalNumber(decimal: event.longitude).doubleValue
+        )
+        let item = MKMapItem(
+            location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude),
+            address: nil
+        )
+        item.name = event.location
+        item.openInMaps(
+            launchOptions: [
+                MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: coordinate)
+            ]
+        )
     }
 }

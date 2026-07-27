@@ -1,171 +1,1877 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "About" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "À propos" } } } },
-    "Accept" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Accepter" } } } },
-    "Account created. Check your email to confirm it before signing in." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Compte créé. Consultez vos e-mails pour le confirmer avant de vous connecter." } } } },
-    "Action failed" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Échec de l’action" } } } },
-    "Administrator" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Administrateur" } } } },
-    "All eligible friends are already participating or invited." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tous les amis éligibles participent déjà ou ont été invités." } } } },
-    "A player" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Un joueur" } } } },
-    "A player left" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Un joueur est parti" } } } },
-    "A spot may be available" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Une place est peut-être disponible" } } } },
-    "Cancel" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Annuler" } } } },
-    "Cancel request" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Annuler la demande" } } } },
-    "Choose this team" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Choisir cette équipe" } } } },
-    "Complete every required field. The date must be in the future and the price must be a whole euro amount." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Renseignez tous les champs obligatoires. La date doit être future et le prix doit être un montant entier en euros." } } } },
-    "Confirm new password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Confirmer le nouveau mot de passe" } } } },
-    "Confirm password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Confirmer le mot de passe" } } } },
-    "Confirm your account" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Confirmer votre compte" } } } },
-    "Confirmation instructions have been sent." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les instructions de confirmation ont été envoyées." } } } },
-    "Coordinates are required by the current API contract." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les coordonnées sont obligatoires dans le contrat API actuel." } } } },
-    "Create account" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Créer le compte" } } } },
-    "Create an account" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Créer un compte" } } } },
-    "Create an event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Créer un événement" } } } },
-    "Create an event and invite your friends to play." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Créez un événement et invitez vos amis à jouer." } } } },
-    "Decline" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Refuser" } } } },
-    "Declined requests" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demandes refusées" } } } },
-    "Delete" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Supprimer" } } } },
-    "Delete event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Supprimer l’événement" } } } },
-    "Delete this event?" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Supprimer cet événement ?" } } } },
-    "Description (optional)" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Description (facultative)" } } } },
-    "Done" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Terminé" } } } },
-    "Edit event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Modifier l’événement" } } } },
-    "Email" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "E-mail" } } } },
-    "Event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événement" } } } },
-    "Event canceled" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événement annulé" } } } },
-    "Event details" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Détails de l’événement" } } } },
-    "Event unavailable" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événement indisponible" } } } },
-    "Event updated" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événement mis à jour" } } } },
-    "Event updates and invitations will appear here." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les mises à jour des événements et les invitations apparaîtront ici." } } } },
-    "Events" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événements" } } } },
-    "Find a player" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Trouver un joueur" } } } },
-    "Find players" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Trouver des joueurs" } } } },
-    "First name" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Prénom" } } } },
-    "FlipFlapp update" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Actualité FlipFlapp" } } } },
-    "Forgot your password?" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mot de passe oublié ?" } } } },
-    "Friend request" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demande d’ami" } } } },
-    "Friends" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Amis" } } } },
-    "If this address exists, password reset instructions have been sent." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Si cette adresse existe, les instructions de réinitialisation ont été envoyées." } } } },
-    "Invite" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Inviter" } } } },
-    "Invite friends" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Inviter des amis" } } } },
-    "Invited" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Invités" } } } },
-    "Join the bench" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Rejoindre le banc" } } } },
-    "Kick-off" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Coup d’envoi" } } } },
-    "Last name" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nom" } } } },
-    "Latitude" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Latitude" } } } },
-    "Leave both fields empty to keep your current password." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Laissez les deux champs vides pour conserver votre mot de passe actuel." } } } },
-    "Leave event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Quitter l’événement" } } } },
-    "Leave this event?" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Quitter cet événement ?" } } } },
-    "Loading" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Chargement" } } } },
-    "Location" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Lieu" } } } },
-    "Longitude" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Longitude" } } } },
-    "Map coordinates" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Coordonnées cartographiques" } } } },
-    "Mark all read" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Tout marquer comme lu" } } } },
-    "Name or username" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nom ou nom d’utilisateur" } } } },
-    "New" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nouveau" } } } },
-    "New event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nouvel événement" } } } },
-    "New password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nouveau mot de passe" } } } },
-    "New password (optional)" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nouveau mot de passe (facultatif)" } } } },
-    "New player" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nouveau joueur" } } } },
-    "No friendships yet" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pas encore d’amis" } } } },
-    "No matching players" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucun joueur correspondant" } } } },
-    "No notifications" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucune notification" } } } },
-    "No players yet" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucun joueur pour le moment" } } } },
-    "No upcoming events" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucun événement à venir" } } } },
-    "Nobody to invite" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Personne à inviter" } } } },
-    "Not selected" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Non sélectionné" } } } },
-    "Notifications" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } } } },
-    "Official capacity" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Capacité officielle" } } } },
-    "Official players" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Joueurs officiels" } } } },
-    "OK" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "OK" } } } },
-    "Open FlipFlapp to see what changed." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvrez FlipFlapp pour voir ce qui a changé." } } } },
-    "Open Friends to respond." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvrez Amis pour répondre." } } } },
-    "Opens event details" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvre les détails de l’événement" } } } },
-    "Organizer" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Organisateur" } } } },
-    "Organizer controls" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Gestion de l’organisateur" } } } },
-    "Organize your football events with friends." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Organisez vos matchs de football entre amis." } } } },
-    "Participation" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Participation" } } } },
-    "Password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mot de passe" } } } },
-    "Password reset" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réinitialisation du mot de passe" } } } },
-    "Passwords do not match." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les mots de passe ne correspondent pas." } } } },
-    "Personal information" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Informations personnelles" } } } },
-    "Player" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Joueur" } } } },
-    "Player profile" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Profil du joueur" } } } },
-    "Player unavailable" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Joueur indisponible" } } } },
-    "Players and price" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Joueurs et prix" } } } },
-    "Preparing FlipFlapp…" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Préparation de FlipFlapp…" } } } },
-    "Price in euros" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Prix en euros" } } } },
-    "Private" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Privé" } } } },
-    "Private event" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Événement privé" } } } },
-    "Profile" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Profil" } } } },
-    "Public" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Public" } } } },
-    "Remove" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirer" } } } },
-    "Removing a declined request lets either player send a new request later." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirer une demande refusée permettra à chaque joueur d’en envoyer une nouvelle plus tard." } } } },
-    "Rename team" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Renommer l’équipe" } } } },
-    "Request a reset" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demander une réinitialisation" } } } },
-    "Request not sent" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demande non envoyée" } } } },
-    "Requests received" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demandes reçues" } } } },
-    "Requests sent" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Demandes envoyées" } } } },
-    "Resend confirmation email" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Renvoyer l’e-mail de confirmation" } } } },
-    "Reset token" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Jeton de réinitialisation" } } } },
-    "Restoring your session…" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Restauration de votre session…" } } } },
-    "Save" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrer" } } } },
-    "Save profile" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Enregistrer le profil" } } } },
-    "Schedule" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Horaire" } } } },
-    "Search by first name, last name or username to connect with players." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Recherchez par prénom, nom ou nom d’utilisateur pour retrouver des joueurs." } } } },
-    "Search uses first name, last name and username — never email." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "La recherche utilise le prénom, le nom et le nom d’utilisateur — jamais l’e-mail." } } } },
-    "Security" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sécurité" } } } },
-    "Selected" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélectionné" } } } },
-    "Send confirmation" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Envoyer la confirmation" } } } },
-    "Send reset instructions" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Envoyer les instructions" } } } },
-    "Set a new password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Définir un nouveau mot de passe" } } } },
-    "Sign in" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Se connecter" } } } },
-    "Sign out" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Se déconnecter" } } } },
-    "Sign out of FlipFlapp?" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Se déconnecter de FlipFlapp ?" } } } },
-    "Team name" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nom de l’équipe" } } } },
-    "Teams" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Équipes" } } } },
-    "The event, its participation and pending invitations will be permanently removed." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’événement, ses participations et ses invitations en attente seront définitivement supprimés." } } } },
-    "The server decides who can view private events based on friendships, participation and invitations." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le serveur décide qui peut voir les événements privés selon les amitiés, les participations et les invitations." } } } },
-    "This event has no content to display." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Cet événement n’a aucun contenu à afficher." } } } },
-    "This profile cannot be displayed." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ce profil ne peut pas être affiché." } } } },
-    "Title" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Titre" } } } },
-    "Try again" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réessayer" } } } },
-    "Try again." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réessayez." } } } },
-    "Unable to load" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Chargement impossible" } } } },
-    "Unable to start FlipFlapp" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de démarrer FlipFlapp" } } } },
-    "Unfriend" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirer des amis" } } } },
-    "Unread notification" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Notification non lue" } } } },
-    "Update password" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Mettre à jour le mot de passe" } } } },
-    "Use a short name of 24 characters or fewer." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Utilisez un nom court de 24 caractères maximum." } } } },
-    "We will send a fresh account confirmation link." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nous enverrons un nouveau lien de confirmation du compte." } } } },
-    "You" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous" } } } },
-    "You are invited" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous êtes invité" } } } },
-    "You will receive a secure reset token by email." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous recevrez un jeton sécurisé de réinitialisation par e-mail." } } } },
-    "Your participation will be removed. You may lose access to a private event." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre participation sera supprimée. Vous pourriez perdre l’accès à un événement privé." } } } },
-    "Your password has been updated. You can now sign in." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter." } } } },
-    "Your position" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre équipe" } } } },
-    "Your profile" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre profil" } } } },
-    "Your profile has been updated." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre profil a été mis à jour." } } } },
-    "%@ has been canceled." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "%@ a été annulé." } } } },
-    "%1$@ invited you to %2$@." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ vous a invité à %2$@." } } } },
-    "%1$@ joined %2$@." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ a rejoint %2$@." } } } },
-    "%1$@ left %2$@." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "%1$@ a quitté %2$@." } } } },
-    "Check the teams for %@." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Consultez les équipes de %@." } } } },
-    "Information changed for %@." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les informations de %@ ont changé." } } } },
-    "Organized by %@" : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Organisé par %@" } } } },
-    "The API address is invalid." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’adresse de l’API est invalide." } } } },
-    "The app could not read the server response. Please update the app or try again later." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’app n’a pas pu lire la réponse du serveur. Mettez l’app à jour ou réessayez plus tard." } } } },
-    "The production API must use HTTPS." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’API de production doit utiliser HTTPS." } } } },
-    "The request could not be prepared." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "La requête n’a pas pu être préparée." } } } },
-    "The secure session could not be accessed." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible d’accéder à la session sécurisée." } } } },
-    "The server returned an error (%lld). Try again later." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le serveur a renvoyé une erreur (%lld). Réessayez plus tard." } } } },
-    "The server took too long to respond. Try again." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le serveur a mis trop de temps à répondre. Réessayez." } } } },
-    "This content is no longer available." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ce contenu n’est plus disponible." } } } },
-    "Your session has expired. Sign in again." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre session a expiré. Reconnectez-vous." } } } },
-    "You are not allowed to perform this action." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vous n’êtes pas autorisé à effectuer cette action." } } } },
-    "No network connection. Check your connection and try again." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucune connexion réseau. Vérifiez votre connexion et réessayez." } } } },
-    "Some information needs to be corrected." : { "localizations" : { "fr" : { "stringUnit" : { "state" : "translated", "value" : "Certaines informations doivent être corrigées." } } } }
+    "%@ · %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · %@"
+          }
+        }
+      }
+    },
+    "%@ has been canceled." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ a été annulé."
+          }
+        }
+      }
+    },
+    "%1$@ invited you to %2$@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ vous a invité à %2$@."
+          }
+        }
+      }
+    },
+    "%1$@ joined %2$@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ a rejoint %2$@."
+          }
+        }
+      }
+    },
+    "%1$@ left %2$@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ a quitté %2$@."
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "comment" : "A label displaying the number of players on a team. The argument is the number of players on the team.",
+      "isCommentAutoGenerated" : true
+    },
+    "%lld players" : {
+      "comment" : "A label that describes the number of players on a team. The argument is the number of players.",
+      "isCommentAutoGenerated" : true
+    },
+    "%lld players out of %lld" : {
+      "comment" : "A label that describes the number of participants in an event. The first argument is the number of participants. The second argument is the number of participants.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld players out of %2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "comment" : "A label showing the current number of participants and the maximum number of participants for an event.",
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "A player" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un joueur"
+          }
+        }
+      }
+    },
+    "A player left" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un joueur est parti"
+          }
+        }
+      }
+    },
+    "A spot may be available" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une place est peut-être disponible"
+          }
+        }
+      }
+    },
+    "About" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
+          }
+        }
+      }
+    },
+    "Accept" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accepter"
+          }
+        }
+      }
+    },
+    "Account created. Check your email to confirm it before signing in." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compte créé. Consultez vos e-mails pour le confirmer avant de vous connecter."
+          }
+        }
+      }
+    },
+    "Action failed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de l’action"
+          }
+        }
+      }
+    },
+    "Address selected" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse sélectionnée"
+          }
+        }
+      }
+    },
+    "Administrator" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Administrateur"
+          }
+        }
+      }
+    },
+    "All eligible friends are already participating or invited." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les amis éligibles participent déjà ou ont été invités."
+          }
+        }
+      }
+    },
+    "Allow location access to draw the driving route from where you are to the pitch." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisez l’accès à la position pour tracer l’itinéraire en voiture jusqu’au terrain."
+          }
+        }
+      }
+    },
+    "an event" : {
+      "comment" : "A default title for an event notification.",
+      "isCommentAutoGenerated" : true
+    },
+    "Calculating route…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcul de l’itinéraire…"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "Cancel request" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la demande"
+          }
+        }
+      }
+    },
+    "Check the teams for %@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultez les équipes de %@."
+          }
+        }
+      }
+    },
+    "Choose an address from the suggestions so the place can be saved." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez une adresse dans les suggestions pour enregistrer le lieu."
+          }
+        }
+      }
+    },
+    "Choose this team" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir cette équipe"
+          }
+        }
+      }
+    },
+    "Complete every required field. The date must be in the future and the price must be a whole euro amount." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renseignez tous les champs obligatoires. La date doit être future et le prix doit être un montant entier en euros."
+          }
+        }
+      }
+    },
+    "Confirm new password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer le nouveau mot de passe"
+          }
+        }
+      }
+    },
+    "Confirm password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer le mot de passe"
+          }
+        }
+      }
+    },
+    "Confirm your account" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer votre compte"
+          }
+        }
+      }
+    },
+    "Confirmation instructions have been sent." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les instructions de confirmation ont été envoyées."
+          }
+        }
+      }
+    },
+    "Coordinates are filled automatically from the selected address." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les coordonnées sont renseignées automatiquement à partir de l’adresse sélectionnée."
+          }
+        }
+      }
+    },
+    "Could not resolve that address. Try another suggestion." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de résoudre cette adresse. Essayez une autre suggestion."
+          }
+        }
+      }
+    },
+    "Create account" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer le compte"
+          }
+        }
+      }
+    },
+    "Create an account" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un compte"
+          }
+        }
+      }
+    },
+    "Create an event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un événement"
+          }
+        }
+      }
+    },
+    "Create an event and invite your friends to play." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créez un événement et invitez vos amis à jouer."
+          }
+        }
+      }
+    },
+    "Decline" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refuser"
+          }
+        }
+      }
+    },
+    "Declined requests" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demandes refusées"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
+        }
+      }
+    },
+    "Delete event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer l’événement"
+          }
+        }
+      }
+    },
+    "Delete this event?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer cet événement ?"
+          }
+        }
+      }
+    },
+    "Description (optional)" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description (facultative)"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
+          }
+        }
+      }
+    },
+    "Edit event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier l’événement"
+          }
+        }
+      }
+    },
+    "Email" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
+          }
+        }
+      }
+    },
+    "Event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement"
+          }
+        }
+      }
+    },
+    "Event canceled" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement annulé"
+          }
+        }
+      }
+    },
+    "Event details" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails de l’événement"
+          }
+        }
+      }
+    },
+    "Event unavailable" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement indisponible"
+          }
+        }
+      }
+    },
+    "Event updated" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement mis à jour"
+          }
+        }
+      }
+    },
+    "Event updates and invitations will appear here." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les mises à jour des événements et les invitations apparaîtront ici."
+          }
+        }
+      }
+    },
+    "Events" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événements"
+          }
+        }
+      }
+    },
+    "Find a player" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver un joueur"
+          }
+        }
+      }
+    },
+    "Find players" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouver des joueurs"
+          }
+        }
+      }
+    },
+    "First name" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prénom"
+          }
+        }
+      }
+    },
+    "FlipFlapp" : {
+      "comment" : "The name of the app.",
+      "isCommentAutoGenerated" : true
+    },
+    "FlipFlapp update" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualité FlipFlapp"
+          }
+        }
+      }
+    },
+    "Forgot your password?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe oublié ?"
+          }
+        }
+      }
+    },
+    "Friend request" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demande d’ami"
+          }
+        }
+      }
+    },
+    "Friends" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amis"
+          }
+        }
+      }
+    },
+    "Getting there" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S’y rendre"
+          }
+        }
+      }
+    },
+    "If this address exists, password reset instructions have been sent." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si cette adresse existe, les instructions de réinitialisation ont été envoyées."
+          }
+        }
+      }
+    },
+    "Information changed for %@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les informations de %@ ont changé."
+          }
+        }
+      }
+    },
+    "Invite" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inviter"
+          }
+        }
+      }
+    },
+    "Invite friends" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inviter des amis"
+          }
+        }
+      }
+    },
+    "Invited" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invités"
+          }
+        }
+      }
+    },
+    "Join the bench" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejoindre le banc"
+          }
+        }
+      }
+    },
+    "Kick-off" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coup d’envoi"
+          }
+        }
+      }
+    },
+    "Last name" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
+        }
+      }
+    },
+    "Leave both fields empty to keep your current password." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laissez les deux champs vides pour conserver votre mot de passe actuel."
+          }
+        }
+      }
+    },
+    "Leave event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter l’événement"
+          }
+        }
+      }
+    },
+    "Leave this event?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter cet événement ?"
+          }
+        }
+      }
+    },
+    "Loading" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement"
+          }
+        }
+      }
+    },
+    "Location" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieu"
+          }
+        }
+      }
+    },
+    "Location access is off. The pin still shows the pitch; enable location in Settings to see your route." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’accès à la position est désactivé. L’épingle indique toujours le terrain ; activez la localisation dans Réglages pour voir votre itinéraire."
+          }
+        }
+      }
+    },
+    "Looking up address…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche de l’adresse…"
+          }
+        }
+      }
+    },
+    "Map of the event location" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carte du lieu de l’événement"
+          }
+        }
+      }
+    },
+    "Map preview of the selected address" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperçu cartographique de l’adresse sélectionnée"
+          }
+        }
+      }
+    },
+    "Mark all read" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout marquer comme lu"
+          }
+        }
+      }
+    },
+    "My location" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ma position"
+          }
+        }
+      }
+    },
+    "Name or username" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom ou nom d’utilisateur"
+          }
+        }
+      }
+    },
+    "New" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau"
+          }
+        }
+      }
+    },
+    "New event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouvel événement"
+          }
+        }
+      }
+    },
+    "New password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau mot de passe"
+          }
+        }
+      }
+    },
+    "New password (optional)" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau mot de passe (facultatif)"
+          }
+        }
+      }
+    },
+    "New player" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau joueur"
+          }
+        }
+      }
+    },
+    "No driving route could be calculated." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de calculer un itinéraire en voiture."
+          }
+        }
+      }
+    },
+    "No friendships yet" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas encore d’amis"
+          }
+        }
+      }
+    },
+    "No matching players" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun joueur correspondant"
+          }
+        }
+      }
+    },
+    "No network connection. Check your connection and try again." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune connexion réseau. Vérifiez votre connexion et réessayez."
+          }
+        }
+      }
+    },
+    "No notifications" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune notification"
+          }
+        }
+      }
+    },
+    "No players yet" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun joueur pour le moment"
+          }
+        }
+      }
+    },
+    "No upcoming events" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun événement à venir"
+          }
+        }
+      }
+    },
+    "Nobody to invite" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personne à inviter"
+          }
+        }
+      }
+    },
+    "Not selected" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non sélectionné"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
+    },
+    "Official capacity" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capacité officielle"
+          }
+        }
+      }
+    },
+    "Official players" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs officiels"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Open FlipFlapp to see what changed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez FlipFlapp pour voir ce qui a changé."
+          }
+        }
+      }
+    },
+    "Open Friends to respond." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez Amis pour répondre."
+          }
+        }
+      }
+    },
+    "Open in Maps" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir dans Plans"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir Réglages"
+          }
+        }
+      }
+    },
+    "Opens Apple Maps with directions to the event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvre Plans avec l’itinéraire vers l’événement"
+          }
+        }
+      }
+    },
+    "Opens event details" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvre les détails de l’événement"
+          }
+        }
+      }
+    },
+    "Opens this address in Maps" : {
+      "comment" : "A hint that describes how to open an address in Maps.",
+      "isCommentAutoGenerated" : true
+    },
+    "Organize your football events with friends." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organisez vos matchs de football entre amis."
+          }
+        }
+      }
+    },
+    "Organized by %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organisé par %@"
+          }
+        }
+      }
+    },
+    "Organizer" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organisateur"
+          }
+        }
+      }
+    },
+    "Organizer controls" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestion de l’organisateur"
+          }
+        }
+      }
+    },
+    "Participation" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Participation"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
+          }
+        }
+      }
+    },
+    "Password reset" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialisation du mot de passe"
+          }
+        }
+      }
+    },
+    "Passwords do not match." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les mots de passe ne correspondent pas."
+          }
+        }
+      }
+    },
+    "Personal information" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations personnelles"
+          }
+        }
+      }
+    },
+    "Player" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur"
+          }
+        }
+      }
+    },
+    "Player profile" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil du joueur"
+          }
+        }
+      }
+    },
+    "Player unavailable" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur indisponible"
+          }
+        }
+      }
+    },
+    "Players and price" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueurs et prix"
+          }
+        }
+      }
+    },
+    "Preparing FlipFlapp…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préparation de FlipFlapp…"
+          }
+        }
+      }
+    },
+    "Price in euros" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix en euros"
+          }
+        }
+      }
+    },
+    "Private" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privé"
+          }
+        }
+      }
+    },
+    "Private event" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Événement privé"
+          }
+        }
+      }
+    },
+    "Profile" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
+    },
+    "Public" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer"
+          }
+        }
+      }
+    },
+    "Removing a declined request lets either player send a new request later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer une demande refusée permettra à chaque joueur d’en envoyer une nouvelle plus tard."
+          }
+        }
+      }
+    },
+    "Rename %@" : {
+      "comment" : "A button that renames an event team.",
+      "isCommentAutoGenerated" : true
+    },
+    "Rename team" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renommer l’équipe"
+          }
+        }
+      }
+    },
+    "Request a reset" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demander une réinitialisation"
+          }
+        }
+      }
+    },
+    "Request not sent" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demande non envoyée"
+          }
+        }
+      }
+    },
+    "Requests received" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demandes reçues"
+          }
+        }
+      }
+    },
+    "Requests sent" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demandes envoyées"
+          }
+        }
+      }
+    },
+    "Resend confirmation email" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renvoyer l’e-mail de confirmation"
+          }
+        }
+      }
+    },
+    "Reset token" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeton de réinitialisation"
+          }
+        }
+      }
+    },
+    "Restoring your session…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restauration de votre session…"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        }
+      }
+    },
+    "Save profile" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer le profil"
+          }
+        }
+      }
+    },
+    "Schedule" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horaire"
+          }
+        }
+      }
+    },
+    "Search by first name, last name or username to connect with players." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherchez par prénom, nom ou nom d’utilisateur pour retrouver des joueurs."
+          }
+        }
+      }
+    },
+    "Search uses first name, last name and username — never email." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La recherche utilise le prénom, le nom et le nom d’utilisateur — jamais l’e-mail."
+          }
+        }
+      }
+    },
+    "Security" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sécurité"
+          }
+        }
+      }
+    },
+    "Selected" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionné"
+          }
+        }
+      }
+    },
+    "Send a friend request to %@" : {
+      "comment" : "A button that sends a friend request to a user.",
+      "isCommentAutoGenerated" : true
+    },
+    "Send confirmation" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer la confirmation"
+          }
+        }
+      }
+    },
+    "Send reset instructions" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer les instructions"
+          }
+        }
+      }
+    },
+    "Set a new password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir un nouveau mot de passe"
+          }
+        }
+      }
+    },
+    "Sign in" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        }
+      }
+    },
+    "Sign out" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se déconnecter"
+          }
+        }
+      }
+    },
+    "Sign out of FlipFlapp?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se déconnecter de FlipFlapp ?"
+          }
+        }
+      }
+    },
+    "Some information needs to be corrected." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Certaines informations doivent être corrigées."
+          }
+        }
+      }
+    },
+    "Start typing, then choose an address from the suggestions." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencez à saisir, puis choisissez une adresse dans les suggestions."
+          }
+        }
+      }
+    },
+    "Team name" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom de l’équipe"
+          }
+        }
+      }
+    },
+    "Teams" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équipes"
+          }
+        }
+      }
+    },
+    "The API address is invalid." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’adresse de l’API est invalide."
+          }
+        }
+      }
+    },
+    "The app could not read the server response. Please update the app or try again later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’app n’a pas pu lire la réponse du serveur. Mettez l’app à jour ou réessayez plus tard."
+          }
+        }
+      }
+    },
+    "The event, its participation and pending invitations will be permanently removed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’événement, ses participations et ses invitations en attente seront définitivement supprimés."
+          }
+        }
+      }
+    },
+    "The production API must use HTTPS." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’API de production doit utiliser HTTPS."
+          }
+        }
+      }
+    },
+    "The request could not be prepared." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La requête n’a pas pu être préparée."
+          }
+        }
+      }
+    },
+    "The secure session could not be accessed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’accéder à la session sécurisée."
+          }
+        }
+      }
+    },
+    "The server decides who can view private events based on friendships, participation and invitations." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le serveur décide qui peut voir les événements privés selon les amitiés, les participations et les invitations."
+          }
+        }
+      }
+    },
+    "The server returned an error (%lld). Try again later." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le serveur a renvoyé une erreur (%lld). Réessayez plus tard."
+          }
+        }
+      }
+    },
+    "The server took too long to respond. Try again." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le serveur a mis trop de temps à répondre. Réessayez."
+          }
+        }
+      }
+    },
+    "This content is no longer available." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce contenu n’est plus disponible."
+          }
+        }
+      }
+    },
+    "This event has no content to display." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet événement n’a aucun contenu à afficher."
+          }
+        }
+      }
+    },
+    "This profile cannot be displayed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce profil ne peut pas être affiché."
+          }
+        }
+      }
+    },
+    "Title" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titre"
+          }
+        }
+      }
+    },
+    "Try again" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
+          }
+        }
+      }
+    },
+    "Try again." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayez."
+          }
+        }
+      }
+    },
+    "Unable to load" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement impossible"
+          }
+        }
+      }
+    },
+    "Unable to start FlipFlapp" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de démarrer FlipFlapp"
+          }
+        }
+      }
+    },
+    "Unfriend" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer des amis"
+          }
+        }
+      }
+    },
+    "Unread notification" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification non lue"
+          }
+        }
+      }
+    },
+    "Update password" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour le mot de passe"
+          }
+        }
+      }
+    },
+    "Use a short name of 24 characters or fewer." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisez un nom court de 24 caractères maximum."
+          }
+        }
+      }
+    },
+    "Use my location for directions" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser ma position pour l’itinéraire"
+          }
+        }
+      }
+    },
+    "Versus" : {
+      "comment" : "A label that indicates a matchup between two teams.",
+      "isCommentAutoGenerated" : true
+    },
+    "VS" : {
+      "comment" : "A label displayed in the middle of a grid of two teams.",
+      "isCommentAutoGenerated" : true
+    },
+    "We will send a fresh account confirmation link." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous enverrons un nouveau lien de confirmation du compte."
+          }
+        }
+      }
+    },
+    "You" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous"
+          }
+        }
+      }
+    },
+    "You are invited" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous êtes invité"
+          }
+        }
+      }
+    },
+    "You are not allowed to perform this action." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous n’êtes pas autorisé à effectuer cette action."
+          }
+        }
+      }
+    },
+    "You will receive a secure reset token by email." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous recevrez un jeton sécurisé de réinitialisation par e-mail."
+          }
+        }
+      }
+    },
+    "Your location could not be determined right now." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre position n’a pas pu être déterminée pour le moment."
+          }
+        }
+      }
+    },
+    "Your participation will be removed. You may lose access to a private event." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre participation sera supprimée. Vous pourriez perdre l’accès à un événement privé."
+          }
+        }
+      }
+    },
+    "Your password has been updated. You can now sign in." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter."
+          }
+        }
+      }
+    },
+    "Your position" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre équipe"
+          }
+        }
+      }
+    },
+    "Your profile" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre profil"
+          }
+        }
+      }
+    },
+    "Your profile has been updated." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre profil a été mis à jour."
+          }
+        }
+      }
+    },
+    "Your session has expired. Sign in again." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre session a expiré. Reconnectez-vous."
+          }
+        }
+      }
+    }
   },
-  "version" : "1.0"
+  "version" : "1.1"
 }
