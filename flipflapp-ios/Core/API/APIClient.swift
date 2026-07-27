@@ -29,6 +29,7 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool = true
     ) async throws -> Response {
@@ -36,6 +37,7 @@ actor APIClient {
             path: path,
             method: method,
             body: body,
+            contentType: contentType,
             queryItems: queryItems,
             authenticated: authenticated
         )
@@ -53,12 +55,14 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         authenticated: Bool = true
     ) async throws {
         _ = try await perform(
             path: path,
             method: method,
             body: body,
+            contentType: contentType,
             authenticated: authenticated
         )
     }
@@ -67,12 +71,14 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         authenticated: Bool = true
     ) async throws -> (Response, HTTPURLResponse) {
         let (data, response) = try await perform(
             path: path,
             method: method,
             body: body,
+            contentType: contentType,
             authenticated: authenticated
         )
         try validateJSON(response: response, data: data)
@@ -88,6 +94,7 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool
     ) async throws -> (Data, HTTPURLResponse) {
@@ -108,7 +115,7 @@ actor APIClient {
         request.timeoutInterval = 30
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         if body != nil {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(contentType ?? "application/json", forHTTPHeaderField: "Content-Type")
         }
         if authenticated {
             guard let token = try await tokenStore.readToken() else {

@@ -134,28 +134,35 @@ struct EventDetailsScreen: View {
                     .listRowBackground(Color.clear)
             }
 
-            if let description = snapshot.event.description, !description.isEmpty {
-                Section(String(localized: "About")) {
-                    Text(description)
-                        .textSelection(.enabled)
-                }
+            Section {
+                EventRouteMapView(
+                    latitude: snapshot.event.latitude,
+                    longitude: snapshot.event.longitude,
+                    title: snapshot.event.location
+                )
+                .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            } header: {
+                Text(String(localized: "Getting there"))
+            } footer: {
+                Text(snapshot.event.location)
             }
 
             Section(String(localized: "Teams")) {
-                ForEach(sortedTeams(snapshot.teams)) { team in
-                    EventTeamCard(
-                        team: team,
-                        participants: snapshot.participants(in: team.id),
-                        currentUserID: currentUser.id,
-                        canRename: team.countable && snapshot.event.currentUser?.participant == true,
-                        isMutating: model.isMutating,
-                        join: { Task { await model.join(teamID: team.id); onChanged() } },
-                        rename: { teamToRename = team }
-                    )
-                    .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                }
+                EventTeamsVersusSection(
+                    event: snapshot.event,
+                    teams: snapshot.teams,
+                    participants: snapshot.participants(in:),
+                    currentUserID: currentUser.id,
+                    canRenameCountableTeams: snapshot.event.currentUser?.participant == true,
+                    isMutating: model.isMutating,
+                    join: { teamID in
+                        Task { await model.join(teamID: teamID); onChanged() }
+                    },
+                    rename: { team in teamToRename = team }
+                )
+                .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
 
             if !snapshot.invitations.isEmpty {
@@ -217,10 +224,5 @@ struct EventDetailsScreen: View {
                 }
             }
         }
-    }
-
-    private func sortedTeams(_ teams: [EventTeam]) -> [EventTeam] {
-        let order: [EventTeam.Slot: Int] = [.teamOne: 0, .teamTwo: 1, .bench: 2]
-        return teams.sorted { order[$0.slot, default: 3] < order[$1.slot, default: 3] }
     }
 }

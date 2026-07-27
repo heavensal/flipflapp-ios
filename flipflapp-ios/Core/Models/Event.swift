@@ -60,6 +60,18 @@ nonisolated struct Event: Codable, Hashable, Identifiable, Sendable {
         case user
         case currentUser = "current_user"
     }
+
+    /// Official per-team capacity for countable slots, matching Rails `countable_slots_for`.
+    func officialCapacity(for slot: EventTeam.Slot) -> Int? {
+        switch slot {
+        case .teamOne:
+            numberOfParticipants / 2
+        case .teamTwo:
+            (numberOfParticipants + 1) / 2
+        case .bench:
+            nil
+        }
+    }
 }
 
 nonisolated struct EventInput: Encodable, Sendable {
