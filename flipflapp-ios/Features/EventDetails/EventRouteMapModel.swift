@@ -20,8 +20,8 @@ final class EventRouteMapModel: NSObject {
     /// Bumped when the map camera should refit the destination or route.
     private(set) var cameraFitToken = 0
 
-    let destinationCoordinate: CLLocationCoordinate2D
-    let destinationTitle: String
+    private(set) var destinationCoordinate: CLLocationCoordinate2D
+    private(set) var destinationTitle: String
 
     private let locationManager = CLLocationManager()
     private var routeTask: Task<Void, Never>?
@@ -49,6 +49,32 @@ final class EventRouteMapModel: NSObject {
         cameraFitToken += 1
         guard locationAccess == .authorized else { return }
         locationManager.startUpdatingLocation()
+    }
+
+    func stop() {
+        locationManager.stopUpdatingLocation()
+        cancelRouteTask()
+    }
+
+    func updateDestination(latitude: Decimal, longitude: Decimal, title: String) {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: Self.degrees(from: latitude),
+            longitude: Self.degrees(from: longitude)
+        )
+        let destinationChanged =
+            coordinate.latitude != destinationCoordinate.latitude
+            || coordinate.longitude != destinationCoordinate.longitude
+            || title != destinationTitle
+        guard destinationChanged else { return }
+
+        destinationCoordinate = coordinate
+        destinationTitle = title
+        route = nil
+        lastRoutedCoordinate = nil
+        cameraFitToken += 1
+
+        guard locationAccess == .authorized, let userCoordinate else { return }
+        refreshRoute(from: userCoordinate)
     }
 
     func requestLocationAccess() {
@@ -116,7 +142,7 @@ final class EventRouteMapModel: NSObject {
 
         do {
             let response = try await MKDirections(request: request).calculate()
-            guard !Task.isCancelled else { return }
+            guard !Task.isCancelled, locationAccess == .authorized else { return }
             guard let route = response.routes.first else {
                 routeErrorMessage = String(localized: "No driving route could be calculated.")
                 self.route = nil
@@ -127,10 +153,15 @@ final class EventRouteMapModel: NSObject {
         } catch is CancellationError {
             return
         } catch {
-            guard !Task.isCancelled else { return }
+            guard !Task.isCancelled, locationAccess == .authorized else { return }
             route = nil
             routeErrorMessage = String(localized: "No driving route could be calculated.")
         }
+    }
+
+    private func cancelRouteTask() {
+        routeTask?.cancel()
+        routeTask = nil
     }
 
     private func mapItem(coordinate: CLLocationCoordinate2D, name: String) -> MKMapItem {
@@ -169,10 +200,12 @@ extension EventRouteMapModel: CLLocationManagerDelegate {
             case .authorized:
                 self.locationManager.startUpdatingLocation()
             case .denied, .notDetermined:
+                self.cancelRouteTask()
                 self.locationManager.stopUpdatingLocation()
                 self.userCoordinate = nil
                 self.route = nil
                 self.lastRoutedCoordinate = nil
+                self.routeErrorMessage = nil
                 self.cameraFitToken += 1
             }
         }

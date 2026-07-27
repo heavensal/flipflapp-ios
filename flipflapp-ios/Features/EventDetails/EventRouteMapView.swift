@@ -3,10 +3,17 @@ import SwiftUI
 import UIKit
 
 struct EventRouteMapView: View {
+    private let latitude: Decimal
+    private let longitude: Decimal
+    private let title: String
+
     @State private var model: EventRouteMapModel
     @State private var cameraPosition: MapCameraPosition
 
     init(latitude: Decimal, longitude: Decimal, title: String) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.title = title
         let model = EventRouteMapModel(
             latitude: latitude,
             longitude: longitude,
@@ -71,6 +78,16 @@ struct EventRouteMapView: View {
             .accessibilityHint(String(localized: "Opens Apple Maps with directions to the event"))
         }
         .onAppear { model.prepare() }
+        .onDisappear { model.stop() }
+        .onChange(of: latitude) { _, _ in
+            model.updateDestination(latitude: latitude, longitude: longitude, title: title)
+        }
+        .onChange(of: longitude) { _, _ in
+            model.updateDestination(latitude: latitude, longitude: longitude, title: title)
+        }
+        .onChange(of: title) { _, _ in
+            model.updateDestination(latitude: latitude, longitude: longitude, title: title)
+        }
         .onChange(of: model.cameraFitToken) { _, _ in
             fitCamera()
         }
