@@ -41,6 +41,7 @@ struct EventDetailsScreen: View {
     var body: some View {
         LoadStateView(
             state: model.state,
+            isRefreshing: model.isRefreshing,
             emptyTitle: "Event unavailable",
             emptyDescription: "This event has no content to display.",
             retry: { Task { await model.reload() } }
@@ -147,8 +148,9 @@ struct EventDetailsScreen: View {
                         team: team,
                         participants: snapshot.participants(in: team.id),
                         currentUserID: currentUser.id,
+                        event: snapshot.event,
                         canRename: team.countable && snapshot.event.currentUser?.participant == true,
-                        isMutating: model.isMutating,
+                        isMutatingThisTeam: model.mutatingTeamID == team.id,
                         join: { Task { await model.join(teamID: team.id); onChanged() } },
                         rename: { teamToRename = team }
                     )

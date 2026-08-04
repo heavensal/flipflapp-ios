@@ -34,7 +34,21 @@ final class InvitationPickerModel {
 
     func load() async {
         if case .loading = state { return }
-        state = .loading
+        if case .idle = state { state = .loading }
+        await fetch()
+    }
+
+    func retry() async {
+        errorMessage = nil
+        if state.hasContent {
+            await fetch()
+        } else {
+            state = .loading
+            await fetch()
+        }
+    }
+
+    private func fetch() async {
         do {
             let buckets = try await api.friendships()
             let friends = buckets.accepted
@@ -43,9 +57,17 @@ final class InvitationPickerModel {
             state = friends.isEmpty ? .empty : .loaded(friends)
         } catch let error as APIError {
             await session.handleAPIError(error)
-            state = .failed(error)
+            if state.hasContent {
+                errorMessage = error.localizedDescription
+            } else {
+                state = .failed(error)
+            }
         } catch {
-            state = .failed(.invalidResponse)
+            if state.hasContent {
+                errorMessage = error.localizedDescription
+            } else {
+                state = .failed(.invalidResponse)
+            }
         }
     }
 

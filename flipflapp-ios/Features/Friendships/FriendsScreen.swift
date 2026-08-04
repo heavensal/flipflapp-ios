@@ -24,6 +24,7 @@ struct FriendsScreen: View {
         NavigationStack {
             LoadStateView(
                 state: model.state,
+                isRefreshing: model.isRefreshing,
                 emptyTitle: "No friendships yet",
                 emptyDescription: "Search by first name, last name or username to connect with players.",
                 retry: { Task { await model.retry() } }
@@ -44,7 +45,12 @@ struct FriendsScreen: View {
                 }
             }
             .navigationDestination(for: UserID.self) { userID in
-                UserProfileScreen(userID: userID, api: api, session: session)
+                UserProfileScreen(
+                    userID: userID,
+                    api: api,
+                    session: session,
+                    currentUserID: currentUser.id
+                )
             }
             .sheet(isPresented: $isPresentingSearch) {
                 FriendsSearchScreen(api: api, session: session) {

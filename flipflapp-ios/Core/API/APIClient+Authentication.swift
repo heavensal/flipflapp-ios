@@ -58,7 +58,6 @@ extension APIClient {
         )
     }
 
-    /// Compatibility operation exposed by Devise alongside the canonical PATCH route.
     func resetPasswordWithPut(_ input: PasswordResetInput) async throws {
         let body = try encode(Envelope(user: input))
         try await sendEmpty(
@@ -79,6 +78,29 @@ extension APIClient {
         )
     }
 
+    func confirmUser(token: String) async throws -> AuthenticatedSession {
+        let body = try encode(Envelope(user: ConfirmationInput(confirmationToken: token)))
+        let (user, response): (CurrentUser, HTTPURLResponse) = try await sendWithHTTPResponse(
+            path: "api/v1/users/confirmation",
+            method: .patch,
+            body: body,
+            authenticated: false
+        )
+
+        guard
+            let authorization = response.value(forHTTPHeaderField: "Authorization"),
+            authorization.lowercased().hasPrefix("bearer ")
+        else {
+            throw APIError.incompatibleResponse
+        }
+
+        let jwt = authorization.dropFirst("Bearer ".count).trimmingCharacters(in: .whitespaces)
+        guard !jwt.isEmpty else {
+            throw APIError.incompatibleResponse
+        }
+        return AuthenticatedSession(user: user, token: jwt)
+    }
+
     func currentUser() async throws -> CurrentUser {
         try await send(path: "api/v1/me", method: .get)
     }
@@ -95,4 +117,12 @@ extension APIClient {
 
 nonisolated private struct EmailInput: Encodable, Sendable {
     let email: String
+}
+
+nonisolated private struct ConfirmationInput: Encodable, Sendable {
+    let confirmationToken: String
+
+    private enum CodingKeys: String, CodingKey {
+        case confirmationToken = "confirmation_token"
+    }
 }

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66D3CB652FF8687F0051B9C1 /* HotwireNative in Frameworks */ = {isa = PBXBuildFile; productRef = 66D3CB642FF8687F0051B9C1 /* HotwireNative */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		66D3CB552FF83CDE0051B9C1 /* flipflapp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flipflapp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66TEST012FF83CDE0051B9C1 /* flipflapp-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flipflapp-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -20,14 +20,25 @@
 			path = "flipflapp-ios";
 			sourceTree = "<group>";
 		};
+		66TEST022FF83CDE0051B9C1 /* flipflapp-iosTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "flipflapp-iosTests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		66TEST072FF83CDE0051B9C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66D3CB522FF83CDE0051B9C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D3CB652FF8687F0051B9C1 /* HotwireNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				66D3CB572FF83CDE0051B9C1 /* flipflapp-ios */,
+				66TEST022FF83CDE0051B9C1 /* flipflapp-iosTests */,
 				66D3CB562FF83CDE0051B9C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				66D3CB552FF83CDE0051B9C1 /* flipflapp-ios.app */,
+				66TEST012FF83CDE0051B9C1 /* flipflapp-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,14 +82,50 @@
 				66D3CB572FF83CDE0051B9C1 /* flipflapp-ios */,
 			);
 			name = "flipflapp-ios";
-			packageProductDependencies = (
-				66D3CB642FF8687F0051B9C1 /* HotwireNative */,
-			);
 			productName = "flipflapp-ios";
 			productReference = 66D3CB552FF83CDE0051B9C1 /* flipflapp-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
+		66TEST052FF83CDE0051B9C1 /* flipflapp-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66TEST092FF83CDE0051B9C1 /* Build configuration list for PBXNativeTarget "flipflapp-iosTests" */;
+			buildPhases = (
+				66TEST062FF83CDE0051B9C1 /* Sources */,
+				66TEST072FF83CDE0051B9C1 /* Frameworks */,
+				66TEST082FF83CDE0051B9C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66TEST042FF83CDE0051B9C1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				66TEST022FF83CDE0051B9C1 /* flipflapp-iosTests */,
+			);
+			name = "flipflapp-iosTests";
+			productName = "flipflapp-iosTests";
+			productReference = 66TEST012FF83CDE0051B9C1 /* flipflapp-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
+
+/* Begin PBXContainerItemProxy section */
+		66TEST032FF83CDE0051B9C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66D3CB4D2FF83CDE0051B9C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66D3CB542FF83CDE0051B9C1;
+			remoteInfo = "flipflapp-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		66TEST042FF83CDE0051B9C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66D3CB542FF83CDE0051B9C1 /* flipflapp-ios */;
+			targetProxy = 66TEST032FF83CDE0051B9C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXProject section */
 		66D3CB4D2FF83CDE0051B9C1 /* Project object */ = {
@@ -89,6 +138,10 @@
 					66D3CB542FF83CDE0051B9C1 = {
 						CreatedOnToolsVersion = 26.6;
 					};
+					66TEST052FF83CDE0051B9C1 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 66D3CB542FF83CDE0051B9C1;
+					};
 				};
 			};
 			buildConfigurationList = 66D3CB502FF83CDE0051B9C1 /* Build configuration list for PBXProject "flipflapp-ios" */;
@@ -100,20 +153,25 @@
 			);
 			mainGroup = 66D3CB4C2FF83CDE0051B9C1;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 66D3CB562FF83CDE0051B9C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				66D3CB542FF83CDE0051B9C1 /* flipflapp-ios */,
+				66TEST052FF83CDE0051B9C1 /* flipflapp-iosTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		66TEST082FF83CDE0051B9C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66D3CB532FF83CDE0051B9C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +182,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		66TEST062FF83CDE0051B9C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66D3CB512FF83CDE0051B9C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +384,42 @@
 			};
 			name = Release;
 		};
+		66TEST0A2FF83CDE0051B9C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S77UZ77V8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-1344.flipflapp-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flipflapp-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flipflapp-ios";
+			};
+			name = Debug;
+		};
+		66TEST0B2FF83CDE0051B9C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S77UZ77V8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-1344.flipflapp-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flipflapp-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flipflapp-ios";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,26 +441,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		66TEST092FF83CDE0051B9C1 /* Build configuration list for PBXNativeTarget "flipflapp-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66TEST0A2FF83CDE0051B9C1 /* Debug */,
+				66TEST0B2FF83CDE0051B9C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hotwired/hotwire-native-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		66D3CB642FF8687F0051B9C1 /* HotwireNative */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66D3CB632FF8687F0051B9C1 /* XCRemoteSwiftPackageReference "hotwire-native-ios" */;
-			productName = HotwireNative;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66D3CB4D2FF83CDE0051B9C1 /* Project object */;
 }

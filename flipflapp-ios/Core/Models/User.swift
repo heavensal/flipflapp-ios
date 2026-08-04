@@ -33,6 +33,7 @@ nonisolated struct CurrentUser: Codable, Hashable, Identifiable, Sendable {
 
     let id: UserID
     let email: String
+    let unconfirmedEmail: String?
     let firstName: String?
     let lastName: String?
     let username: String?
@@ -56,6 +57,7 @@ nonisolated struct CurrentUser: Codable, Hashable, Identifiable, Sendable {
     private enum CodingKeys: String, CodingKey {
         case id
         case email
+        case unconfirmedEmail = "unconfirmed_email"
         case firstName = "first_name"
         case lastName = "last_name"
         case username

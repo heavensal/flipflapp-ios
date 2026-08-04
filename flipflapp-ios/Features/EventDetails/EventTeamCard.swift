@@ -4,10 +4,20 @@ struct EventTeamCard: View {
     let team: EventTeam
     let participants: [EventParticipant]
     let currentUserID: UserID
+    let event: Event
     let canRename: Bool
-    let isMutating: Bool
+    let isMutatingThisTeam: Bool
     let join: () -> Void
     let rename: () -> Void
+
+    private var isJoinDisabled: Bool {
+        guard !isMutatingThisTeam else { return true }
+        guard team.countable else { return false }
+        let teamCapacity = team.slot == .teamOne
+            ? event.numberOfParticipants / 2
+            : (event.numberOfParticipants + 1) / 2
+        return participants.count >= teamCapacity || event.fillLevel == .full
+    }
 
     var body: some View {
         CardSurface {
@@ -55,14 +65,19 @@ struct EventTeamCard: View {
                     StatusPill(title: "Your position", systemImage: "checkmark.circle.fill", tint: .green)
                 } else {
                     Button(action: join) {
-                        Label(
-                            team.slot == .bench ? String(localized: "Join the bench") : String(localized: "Choose this team"),
-                            systemImage: "arrow.right.circle.fill"
-                        )
-                        .frame(maxWidth: .infinity)
+                        if isMutatingThisTeam {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            Label(
+                                team.slot == .bench ? String(localized: "Join the bench") : String(localized: "Choose this team"),
+                                systemImage: "arrow.right.circle.fill"
+                            )
+                            .frame(maxWidth: .infinity)
+                        }
                     }
                     .buttonStyle(.bordered)
-                    .disabled(isMutating)
+                    .disabled(isJoinDisabled)
                 }
             }
         }

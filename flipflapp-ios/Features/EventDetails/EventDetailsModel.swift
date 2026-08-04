@@ -20,7 +20,8 @@ struct EventDetailsSnapshot {
 @Observable
 final class EventDetailsModel {
     private(set) var state: LoadState<EventDetailsSnapshot> = .idle
-    private(set) var isMutating = false
+    private(set) var isRefreshing = false
+    private(set) var mutatingTeamID: EventTeamID?
     var actionErrorMessage: String?
 
     private let eventID: EventID
@@ -41,8 +42,9 @@ final class EventDetailsModel {
     }
 
     func reload() async {
-        if case .loaded = state {
-            // Keep the current content visible while a user-initiated refresh runs.
+        if state.hasContent {
+            isRefreshing = true
+            defer { isRefreshing = false }
         } else {
             state = .loading
         }
@@ -63,17 +65,26 @@ final class EventDetailsModel {
         } catch let error as APIError {
             await session.handleAPIError(error)
             if case .cancelled = error { return }
-            state = .failed(error)
+            if state.hasContent {
+                actionErrorMessage = error.localizedDescription
+            } else {
+                state = .failed(error)
+            }
         } catch {
-            state = .failed(.invalidResponse)
+            if state.hasContent {
+                actionErrorMessage = error.localizedDescription
+            } else {
+                state = .failed(.invalidResponse)
+            }
         }
     }
 
     func join(teamID: EventTeamID) async {
-        guard !isMutating, case var .loaded(snapshot) = state else { return }
-        isMutating = true
+        guard mutatingTeamID == nil, case var .loaded(snapshot) = state else { return }
+        mutatingTeamID = teamID
         actionErrorMessage = nil
-        defer { isMutating = false }
+        let previous = snapshot
+        defer { mutatingTeamID = nil }
 
         do {
             _ = try await api.joinEvent(eventID: eventID, teamID: teamID)
@@ -88,23 +99,25 @@ final class EventDetailsModel {
             snapshot.participants.append(contentsOf: participants)
             state = .loaded(snapshot)
         } catch let error as APIError {
+            state = .loaded(previous)
             await session.handleAPIError(error)
             actionErrorMessage = error.localizedDescription
         } catch {
+            state = .loaded(previous)
             actionErrorMessage = error.localizedDescription
         }
     }
 
     func leave() async -> Bool {
         guard
-            !isMutating,
+            mutatingTeamID == nil,
             case let .loaded(snapshot) = state,
             let participation = snapshot.participation(for: currentUserID)
         else { return false }
 
-        isMutating = true
+        mutatingTeamID = participation.eventTeamID
         actionErrorMessage = nil
-        defer { isMutating = false }
+        defer { mutatingTeamID = nil }
         do {
             try await api.leaveEvent(participantID: participation.id)
             return true
@@ -119,10 +132,10 @@ final class EventDetailsModel {
     }
 
     func rename(teamID: EventTeamID, label: String) async -> Bool {
-        guard !isMutating, case var .loaded(snapshot) = state else { return false }
-        isMutating = true
+        guard mutatingTeamID == nil, case var .loaded(snapshot) = state else { return false }
+        mutatingTeamID = teamID
         actionErrorMessage = nil
-        defer { isMutating = false }
+        defer { mutatingTeamID = nil }
 
         do {
             let updated = try await api.renameEventTeam(
@@ -146,10 +159,10 @@ final class EventDetailsModel {
     }
 
     func deleteEvent() async -> Bool {
-        guard !isMutating else { return false }
-        isMutating = true
+        guard mutatingTeamID == nil else { return false }
+        mutatingTeamID = EventTeamID(rawValue: -1)
         actionErrorMessage = nil
-        defer { isMutating = false }
+        defer { mutatingTeamID = nil }
 
         do {
             try await api.deleteEvent(id: eventID)

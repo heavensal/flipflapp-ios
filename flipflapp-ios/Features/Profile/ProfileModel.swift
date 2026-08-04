@@ -11,11 +11,18 @@ final class ProfileModel {
     var passwordConfirmation = ""
     private(set) var isSaving = false
     private(set) var isSigningOut = false
+    private(set) var isUpdatingAvatar = false
     var errorMessage: String?
     var successMessage: String?
+    var fieldErrors: [String: String] = [:]
 
     private let api: APIClient
     private let session: SessionStore
+
+    var pendingEmailMessage: String? {
+        guard let pending = session.currentUser?.unconfirmedEmail, !pending.isEmpty else { return nil }
+        return String(format: String(localized: "Confirm %@ from your inbox to finish changing your email."), pending)
+    }
 
     init(api: APIClient, session: SessionStore, currentUser: CurrentUser) {
         self.api = api
@@ -35,6 +42,7 @@ final class ProfileModel {
         isSaving = true
         errorMessage = nil
         successMessage = nil
+        fieldErrors = [:]
         defer { isSaving = false }
 
         do {
@@ -54,6 +62,45 @@ final class ProfileModel {
             successMessage = String(localized: "Your profile has been updated.")
         } catch let error as APIError {
             await session.handleAPIError(error)
+            applyValidation(error)
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func uploadAvatar(data: Data, filename: String, mimeType: String) async {
+        guard !isUpdatingAvatar else { return }
+        isUpdatingAvatar = true
+        errorMessage = nil
+        defer { isUpdatingAvatar = false }
+
+        do {
+            let updated = try await api.updateCurrentUserAvatar(
+                data: data,
+                filename: filename,
+                mimeType: mimeType
+            )
+            session.updateCurrentUser(updated)
+            successMessage = String(localized: "Your profile photo has been updated.")
+        } catch let error as APIError {
+            await session.handleAPIError(error)
+            applyValidation(error)
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func removeAvatar() async {
+        guard !isUpdatingAvatar else { return }
+        isUpdatingAvatar = true
+        errorMessage = nil
+        defer { isUpdatingAvatar = false }
+        do {
+            let updated = try await api.removeCurrentUserAvatar()
+            session.updateCurrentUser(updated)
+            successMessage = String(localized: "Your profile photo has been removed.")
+        } catch let error as APIError {
+            await session.handleAPIError(error)
             errorMessage = error.localizedDescription
         } catch {
             errorMessage = error.localizedDescription
@@ -65,5 +112,14 @@ final class ProfileModel {
         isSigningOut = true
         await session.signOut()
         isSigningOut = false
+    }
+
+    private func applyValidation(_ error: APIError) {
+        if let summary = error.validationSummary {
+            errorMessage = summary
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        fieldErrors = error.validationDetails.mapValues { $0.joined(separator: "\n") }
     }
 }

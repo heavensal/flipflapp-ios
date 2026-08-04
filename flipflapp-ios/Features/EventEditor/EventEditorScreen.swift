@@ -27,8 +27,11 @@ struct EventEditorScreen: View {
                     TextField(String(localized: "Title"), text: $model.draft.title)
                     TextField(String(localized: "Description (optional)"), text: $model.draft.description, axis: .vertical)
                         .lineLimit(3...7)
-                    TextField(String(localized: "Location"), text: $model.draft.location, axis: .vertical)
-                        .textContentType(.fullStreetAddress)
+                    LocationSearchField(
+                        location: $model.draft.location,
+                        latitude: $model.draft.latitude,
+                        longitude: $model.draft.longitude
+                    )
                 }
 
                 Section(String(localized: "Schedule")) {
@@ -55,17 +58,6 @@ struct EventEditorScreen: View {
                     Toggle(String(localized: "Private event"), isOn: $model.draft.isPrivate)
                 } footer: {
                     Text(String(localized: "The server decides who can view private events based on friendships, participation and invitations."))
-                }
-
-                Section {
-                    TextField(String(localized: "Latitude"), text: $model.draft.latitude)
-                        .keyboardType(.numbersAndPunctuation)
-                    TextField(String(localized: "Longitude"), text: $model.draft.longitude)
-                        .keyboardType(.numbersAndPunctuation)
-                } header: {
-                    Text(String(localized: "Map coordinates"))
-                } footer: {
-                    Text(String(localized: "Coordinates are required by the current API contract."))
                 }
 
                 if let errorMessage = model.errorMessage {

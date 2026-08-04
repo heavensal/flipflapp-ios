@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     let container: AppContainer
+    let deepLinkRouter: AppDeepLinkRouter
 
     var body: some View {
         Group {
@@ -32,10 +33,16 @@ struct ContentView: View {
             AuthenticationRootView(
                 api: environment.api,
                 session: session,
-                initialMessage: session.restorationMessage
+                initialMessage: session.restorationMessage,
+                deepLinkRouter: deepLinkRouter
             )
         case let .signedIn(user):
-            SignedInRootView(environment: environment, session: session, currentUser: user)
+            SignedInRootView(
+                environment: environment,
+                session: session,
+                currentUser: user,
+                deepLinkRouter: deepLinkRouter
+            )
         }
     }
 }

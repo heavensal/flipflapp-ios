@@ -23,8 +23,15 @@ final class EventsListModel {
     }
 
     func retry() async {
-        state = .loading
-        await fetch(replacingContent: true)
+        refreshErrorMessage = nil
+        if state.hasContent {
+            isRefreshing = true
+            defer { isRefreshing = false }
+            await fetch(replacingContent: false)
+        } else {
+            state = .loading
+            await fetch(replacingContent: true)
+        }
     }
 
     func refresh() async {
@@ -49,8 +56,11 @@ final class EventsListModel {
             }
         } catch {
             let apiError = APIError.invalidResponse
-            state = replacingContent ? .failed(apiError) : state
-            refreshErrorMessage = replacingContent ? nil : apiError.localizedDescription
+            if replacingContent {
+                state = .failed(apiError)
+            } else {
+                refreshErrorMessage = apiError.localizedDescription
+            }
         }
     }
 }

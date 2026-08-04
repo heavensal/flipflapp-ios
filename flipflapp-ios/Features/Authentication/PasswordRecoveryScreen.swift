@@ -3,12 +3,13 @@ import SwiftUI
 struct PasswordRecoveryScreen: View {
     @State private var model: PasswordRecoveryModel
     @State private var email = ""
-    @State private var token = ""
+    @State private var token: String
     @State private var password = ""
     @State private var confirmation = ""
 
-    init(api: APIClient) {
+    init(api: APIClient, initialResetToken: String = "") {
         _model = State(initialValue: PasswordRecoveryModel(api: api))
+        _token = State(initialValue: initialResetToken)
     }
 
     var body: some View {

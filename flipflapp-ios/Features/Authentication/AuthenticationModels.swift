@@ -6,6 +6,7 @@ import Observation
 final class SignInModel {
     var isSubmitting = false
     var errorMessage: String?
+    var suggestsConfirmation = false
 
     private let session: SessionStore
 
@@ -17,6 +18,7 @@ final class SignInModel {
         guard !isSubmitting else { return }
         isSubmitting = true
         errorMessage = nil
+        suggestsConfirmation = false
         defer { isSubmitting = false }
 
         do {
@@ -24,6 +26,12 @@ final class SignInModel {
                 email: email.trimmingCharacters(in: .whitespacesAndNewlines),
                 password: password
             )
+        } catch let error as APIError {
+            if case let .unauthorized(message) = error,
+               message?.localizedCaseInsensitiveContains("confirm") == true {
+                suggestsConfirmation = true
+            }
+            errorMessage = error.localizedDescription
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -36,6 +44,7 @@ final class RegistrationModel {
     var isSubmitting = false
     var errorMessage: String?
     var successMessage: String?
+    var fieldErrors: [String: String] = [:]
 
     private let api: APIClient
 
@@ -59,6 +68,7 @@ final class RegistrationModel {
         isSubmitting = true
         errorMessage = nil
         successMessage = nil
+        fieldErrors = [:]
         defer { isSubmitting = false }
 
         do {
@@ -72,9 +82,20 @@ final class RegistrationModel {
                 )
             )
             successMessage = String(localized: "Account created. Check your email to confirm it before signing in.")
+        } catch let error as APIError {
+            applyValidation(error)
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    private func applyValidation(_ error: APIError) {
+        if let summary = error.validationSummary {
+            errorMessage = summary
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        fieldErrors = error.validationDetails.mapValues { $0.joined(separator: "\n") }
     }
 }
 
@@ -85,6 +106,7 @@ final class PasswordRecoveryModel {
     var isResetting = false
     var errorMessage: String?
     var successMessage: String?
+    var fieldErrors: [String: String] = [:]
 
     private let api: APIClient
 
@@ -97,6 +119,7 @@ final class PasswordRecoveryModel {
         isRequesting = true
         errorMessage = nil
         successMessage = nil
+        fieldErrors = [:]
         defer { isRequesting = false }
 
         do {
@@ -104,6 +127,8 @@ final class PasswordRecoveryModel {
                 email: email.trimmingCharacters(in: .whitespacesAndNewlines)
             )
             successMessage = String(localized: "If this address exists, password reset instructions have been sent.")
+        } catch let error as APIError {
+            applyValidation(error)
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -118,6 +143,7 @@ final class PasswordRecoveryModel {
         isResetting = true
         errorMessage = nil
         successMessage = nil
+        fieldErrors = [:]
         defer { isResetting = false }
 
         do {
@@ -129,9 +155,20 @@ final class PasswordRecoveryModel {
                 )
             )
             successMessage = String(localized: "Your password has been updated. You can now sign in.")
+        } catch let error as APIError {
+            applyValidation(error)
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    private func applyValidation(_ error: APIError) {
+        if let summary = error.validationSummary {
+            errorMessage = summary
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        fieldErrors = error.validationDetails.mapValues { $0.joined(separator: "\n") }
     }
 }
 
@@ -139,13 +176,17 @@ final class PasswordRecoveryModel {
 @Observable
 final class ConfirmationModel {
     var isSubmitting = false
+    var isConfirming = false
     var errorMessage: String?
     var successMessage: String?
+    var fieldErrors: [String: String] = [:]
 
     private let api: APIClient
+    private let session: SessionStore
 
-    init(api: APIClient) {
+    init(api: APIClient, session: SessionStore) {
         self.api = api
+        self.session = session
     }
 
     func resend(email: String) async {
@@ -153,6 +194,7 @@ final class ConfirmationModel {
         isSubmitting = true
         errorMessage = nil
         successMessage = nil
+        fieldErrors = [:]
         defer { isSubmitting = false }
 
         do {
@@ -160,8 +202,39 @@ final class ConfirmationModel {
                 email: email.trimmingCharacters(in: .whitespacesAndNewlines)
             )
             successMessage = String(localized: "Confirmation instructions have been sent.")
+        } catch let error as APIError {
+            applyValidation(error)
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    func confirm(token: String) async -> Bool {
+        guard !isConfirming else { return false }
+        isConfirming = true
+        errorMessage = nil
+        successMessage = nil
+        fieldErrors = [:]
+        defer { isConfirming = false }
+
+        do {
+            try await session.confirmUser(token: token.trimmingCharacters(in: .whitespacesAndNewlines))
+            return true
+        } catch let error as APIError {
+            applyValidation(error)
+            return false
+        } catch {
+            errorMessage = error.localizedDescription
+            return false
+        }
+    }
+
+    private func applyValidation(_ error: APIError) {
+        if let summary = error.validationSummary {
+            errorMessage = summary
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        fieldErrors = error.validationDetails.mapValues { $0.joined(separator: "\n") }
     }
 }

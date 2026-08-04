@@ -49,11 +49,30 @@ nonisolated struct PasswordResetInput: Encodable, Sendable {
 }
 
 nonisolated struct UserUpdateInput: Encodable, Sendable {
-    let firstName: String
-    let lastName: String
-    let email: String
+    let firstName: String?
+    let lastName: String?
+    let email: String?
     let password: String?
     let passwordConfirmation: String?
+    let removeAvatar: Bool?
+
+    init(
+        firstName: String? = nil,
+        lastName: String? = nil,
+        email: String? = nil,
+        password: String? = nil,
+        passwordConfirmation: String? = nil,
+        removeAvatar: Bool? = nil
+    ) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.password = password
+        self.passwordConfirmation = passwordConfirmation
+        self.removeAvatar = removeAvatar
+    }
+
+    static let removeAvatar = UserUpdateInput(removeAvatar: true)
 
     private enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
@@ -61,6 +80,19 @@ nonisolated struct UserUpdateInput: Encodable, Sendable {
         case email
         case password
         case passwordConfirmation = "password_confirmation"
+        case removeAvatar = "remove_avatar"
+    }
+
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(firstName, forKey: .firstName)
+        try container.encodeIfPresent(lastName, forKey: .lastName)
+        try container.encodeIfPresent(email, forKey: .email)
+        try container.encodeIfPresent(password, forKey: .password)
+        try container.encodeIfPresent(passwordConfirmation, forKey: .passwordConfirmation)
+        if removeAvatar == true {
+            try container.encode(true, forKey: .removeAvatar)
+        }
     }
 }
 

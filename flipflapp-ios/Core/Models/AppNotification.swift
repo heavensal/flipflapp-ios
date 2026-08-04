@@ -32,6 +32,42 @@ nonisolated struct AppNotification: Codable, Hashable, Identifiable, Sendable {
         return EventID(rawValue: notifiableID)
     }
 
+    func markingRead(_ read: Bool = true) -> AppNotification {
+        AppNotification(
+            id: id,
+            userID: userID,
+            kind: kind,
+            read: read,
+            payload: payload,
+            notifiableType: notifiableType,
+            notifiableID: notifiableID,
+            createdAt: createdAt,
+            updatedAt: updatedAt
+        )
+    }
+
+    init(
+        id: NotificationID,
+        userID: UserID,
+        kind: Kind,
+        read: Bool,
+        payload: [String: JSONValue],
+        notifiableType: String?,
+        notifiableID: Int?,
+        createdAt: Date,
+        updatedAt: Date
+    ) {
+        self.id = id
+        self.userID = userID
+        self.kind = kind
+        self.read = read
+        self.payload = payload
+        self.notifiableType = notifiableType
+        self.notifiableID = notifiableID
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+
     private enum CodingKeys: String, CodingKey {
         case id
         case userID = "user_id"

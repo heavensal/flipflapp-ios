@@ -34,7 +34,7 @@ struct InvitationPickerSheet: View {
                 state: model.state,
                 emptyTitle: "Nobody to invite",
                 emptyDescription: "All eligible friends are already participating or invited.",
-                retry: { Task { await model.load() } }
+                retry: { Task { await model.retry() } }
             ) { users in
                 List(users) { user in
                     Button {
@@ -61,11 +61,19 @@ struct InvitationPickerSheet: View {
                     Button(String(localized: "Cancel")) { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(String(localized: "Invite")) {
+                    Button {
                         Task {
                             guard let invitations = await model.submit() else { return }
                             onInvited(invitations)
                             dismiss()
+                        }
+                    } label: {
+                        if model.isSubmitting {
+                            ProgressView()
+                        } else {
+                            Text(model.selection.isEmpty
+                                ? String(localized: "Invite")
+                                : String(localized: "Invite (\(model.selection.count))"))
                         }
                     }
                     .disabled(model.selection.isEmpty || model.isSubmitting)

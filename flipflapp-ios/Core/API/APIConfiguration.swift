@@ -3,6 +3,10 @@ import Foundation
 nonisolated struct APIConfiguration: Sendable {
     let baseURL: URL
 
+    init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+
     init(bundle: Bundle = .main) throws {
         #if DEBUG
         let environmentValue = ProcessInfo.processInfo.environment["FLIPFLAPP_API_BASE_URL"]

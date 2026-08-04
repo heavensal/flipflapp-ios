@@ -4,21 +4,30 @@ struct EventsScreen: View {
     let api: APIClient
     let session: SessionStore
     let currentUser: CurrentUser
+    @Binding var pendingEventID: EventID?
 
     @State private var model: EventsListModel
     @State private var isPresentingEditor = false
+    @State private var navigationPath: [EventID] = []
 
-    init(api: APIClient, session: SessionStore, currentUser: CurrentUser) {
+    init(
+        api: APIClient,
+        session: SessionStore,
+        currentUser: CurrentUser,
+        pendingEventID: Binding<EventID?>
+    ) {
         self.api = api
         self.session = session
         self.currentUser = currentUser
+        _pendingEventID = pendingEventID
         _model = State(initialValue: EventsListModel(api: api, session: session))
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             LoadStateView(
                 state: model.state,
+                isRefreshing: model.isRefreshing,
                 emptyTitle: "No upcoming events",
                 emptyDescription: "Create an event and invite your friends to play.",
                 retry: { Task { await model.retry() } }
@@ -68,7 +77,12 @@ struct EventsScreen: View {
                 )
             }
             .navigationDestination(for: UserID.self) { userID in
-                UserProfileScreen(userID: userID, api: api, session: session)
+                UserProfileScreen(
+                    userID: userID,
+                    api: api,
+                    session: session,
+                    currentUserID: currentUser.id
+                )
             }
             .sheet(isPresented: $isPresentingEditor) {
                 EventEditorScreen(api: api, session: session, event: nil) {
@@ -76,6 +90,11 @@ struct EventsScreen: View {
                 }
             }
             .task { await model.load() }
+            .onChange(of: pendingEventID) { _, newValue in
+                guard let eventID = newValue else { return }
+                navigationPath.append(eventID)
+                pendingEventID = nil
+            }
         }
     }
 }

@@ -108,7 +108,11 @@ final class EventEditorModel {
             return try await api.createEvent(input)
         } catch let error as APIError {
             await session.handleAPIError(error)
-            errorMessage = error.localizedDescription
+            if let summary = error.validationSummary {
+                errorMessage = summary
+            } else {
+                errorMessage = error.localizedDescription
+            }
             return nil
         } catch {
             errorMessage = error.localizedDescription

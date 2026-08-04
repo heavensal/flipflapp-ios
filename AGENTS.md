@@ -19,7 +19,7 @@ For every non-trivial change:
 ## Product and backend truth
 
 - Backend business rules live in the Rails repository: `../flipflapp-rails/docs/DOMAIN.md`.
-- The mobile HTTP contract lives in `../flipflapp-rails/swagger/v1/swagger.yaml` and `../flipflapp-rails/docs/API.md`.
+- The mobile HTTP contract lives in `docs/mobile/` and `docs/api/v1/` (LLM-ready OpenAPI + flows/errors/client companions). Start at [docs/mobile/README.md](docs/mobile/README.md). Regenerate from Rails when the API changes.
 - This repository must not recreate authorization or domain invariants as an independent source of truth.
 - Client-side checks improve UX only. The server remains authoritative.
 - If an iOS feature needs an API change, stop and propose the Rails/OpenAPI change first.
@@ -111,11 +111,11 @@ Read-only inspection and requested in-scope documentation/source edits are allow
 ## Required reading
 
 | Task | Read first |
-|---|---|
+| --- | --- |
 | Any feature | `PROJECT.md`, relevant `DOMAIN.md`, `API.md`, `TESTING.md` |
 | App architecture | `ARCHITECTURE.md`, `SWIFT_STYLEGUIDE.md` |
 | UI or navigation | `DESIGN.md`, nearest feature views |
-| Networking/auth | `API.md`, Rails OpenAPI, `SECURITY.md` |
+| Networking/auth | `docs/mobile/README.md`, matching bundle under `docs/mobile/` or `docs/api/v1/`, `SECURITY.md` |
 | Remove Hotwire | `HOTWIRE_MIGRATION.md` |
 | Local commands | `DEVELOPMENT.md` |
 | Codex workflow | `CODEX_PLAYBOOK.md` |

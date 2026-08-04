@@ -143,6 +143,35 @@ MVP defaults:
 
 Do not introduce SwiftData/Core Data as an API cache without an offline product contract, invalidation rules, and migration tests.
 
+## UI reactivity
+
+The app follows a **stale-while-revalidate** pattern so lists and forms stay usable while data refreshes in the background.
+
+### Rules
+
+1. **Full-screen spinner only on first load** — use `LoadState.loading` when `state` is `.idle` and there is no cached value. Never replace visible content with a spinner on refresh, search, or retry.
+2. **Keep content during refresh** — when `LoadState` already has `.loaded(value)`, keep showing `value` and set `isRefreshing` (or domain-specific flags like `isSearching`) instead of switching back to `.loading`.
+3. **Per-row / per-button mutations** — track `sendingUserID`, `mutatingFriendshipID`, or `workingTeamID` per item. Do not disable an entire list while one row is submitting.
+4. **Optimistic UI with rollback** — apply local state changes immediately for read/delete/accept/decline/send; revert on `422`/`403` and surface an inline error.
+5. **Inline errors** — show `InlineErrorView` or field messages below the affected UI. Do not replace a loaded list with `ContentUnavailableView` on a failed refresh.
+6. **Ignore stale responses** — increment a generation counter or compare the current query/identity before applying async results (see `FriendsSearchModel.searchGeneration`).
+7. **No auto-retry on writes** — failed POST/PATCH/DELETE stay failed until the user retries.
+
+### Building blocks
+
+- [`LoadState`](flipflapp-ios/Core/DesignSystem/LoadState.swift) — `hasContent`, `loadedValue` for stale-while-revalidate checks.
+- [`LoadStateView`](flipflapp-ios/Core/DesignSystem/LoadStateView.swift) — renders cached content with an optional top `ProgressView` when `isRefreshing`.
+- [`DebouncedTask`](flipflapp-ios/Core/Concurrency/DebouncedTask.swift) — reusable debounce for search fields (300 ms default).
+
+### Examples
+
+| Screen | Pattern |
+|--------|---------|
+| Events / Friends / Notifications | `load()` sets `.loading` only from `.idle`; `retry()` uses `isRefreshing` when content exists |
+| Friend search | Separate `results` + `isSearching`; debounced query; per-row send button |
+| Event details | Per-team join/leave locks; optimistic join with rollback |
+| Invitation picker | `fetch()` keeps friend list visible; toolbar shows selection count while submitting |
+
 ## Composition over framework building
 
 Use direct, readable feature code. Extract a reusable component when at least two real screens share semantics, not merely similar pixels. Add a package only when Apple frameworks or a small local type cannot meet the requirement safely.

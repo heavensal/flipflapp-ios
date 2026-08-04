@@ -34,6 +34,11 @@ struct SignInScreen: View {
                             InlineErrorView(message: message)
                         }
 
+                        if model.suggestsConfirmation {
+                            NavigationLink(String(localized: "Confirm your account"), value: AuthenticationDestination.confirmation)
+                                .font(.callout.weight(.semibold))
+                        }
+
                         Button {
                             Task { await model.signIn(email: email, password: password) }
                         } label: {

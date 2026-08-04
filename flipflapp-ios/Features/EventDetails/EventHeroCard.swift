@@ -43,7 +43,7 @@ struct EventHeroCard: View {
                 } currentValueLabel: {
                     Text("\(event.participantsCount)/\(event.numberOfParticipants)")
                 }
-                .tint(event.fillLevel == .full ? .orange : .indigo)
+                .tint(event.fillLevel == .full ? .orange : event.fillLevel == .tight ? .yellow : .indigo)
             }
         }
     }

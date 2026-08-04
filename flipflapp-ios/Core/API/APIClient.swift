@@ -30,14 +30,16 @@ actor APIClient {
         method: HTTPMethod,
         body: Data? = nil,
         queryItems: [URLQueryItem] = [],
-        authenticated: Bool = true
+        authenticated: Bool = true,
+        contentType: String? = nil
     ) async throws -> Response {
         let (data, response) = try await perform(
             path: path,
             method: method,
             body: body,
             queryItems: queryItems,
-            authenticated: authenticated
+            authenticated: authenticated,
+            contentType: contentType
         )
         try validateJSON(response: response, data: data)
 
@@ -53,13 +55,15 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        authenticated: Bool = true
+        authenticated: Bool = true,
+        contentType: String? = nil
     ) async throws {
         _ = try await perform(
             path: path,
             method: method,
             body: body,
-            authenticated: authenticated
+            authenticated: authenticated,
+            contentType: contentType
         )
     }
 
@@ -67,13 +71,15 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        authenticated: Bool = true
+        authenticated: Bool = true,
+        contentType: String? = nil
     ) async throws -> (Response, HTTPURLResponse) {
         let (data, response) = try await perform(
             path: path,
             method: method,
             body: body,
-            authenticated: authenticated
+            authenticated: authenticated,
+            contentType: contentType
         )
         try validateJSON(response: response, data: data)
 
@@ -89,7 +95,8 @@ actor APIClient {
         method: HTTPMethod,
         body: Data? = nil,
         queryItems: [URLQueryItem] = [],
-        authenticated: Bool
+        authenticated: Bool,
+        contentType: String? = nil
     ) async throws -> (Data, HTTPURLResponse) {
         var components = URLComponents(
             url: configuration.baseURL.appending(path: path),
@@ -107,12 +114,12 @@ actor APIClient {
         request.httpBody = body
         request.timeoutInterval = 30
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        if body != nil {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let body {
+            request.setValue(contentType ?? "application/json", forHTTPHeaderField: "Content-Type")
         }
         if authenticated {
             guard let token = try await tokenStore.readToken() else {
-                throw APIError.unauthorized
+                throw APIError.unauthorized()
             }
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
@@ -157,7 +164,7 @@ actor APIClient {
     private func mapError(statusCode: Int, data: Data) -> APIError {
         switch statusCode {
         case 401:
-            .unauthorized
+            .unauthorized(message: decodeErrorMessage(from: data))
         case 403:
             .forbidden
         case 404:
@@ -169,14 +176,22 @@ actor APIClient {
         }
     }
 
+    private func decodeErrorMessage(from data: Data) -> String? {
+        if let envelope = try? makeDecoder().decode(APIErrorEnvelope.self, from: data) {
+            return envelope.error.message
+        }
+        if let legacy = try? makeDecoder().decode(AuthenticationErrorEnvelope.self, from: data) {
+            return legacy.error
+        }
+        return nil
+    }
+
     private func decodeErrorDetails(from data: Data) -> [String: [String]] {
         (try? makeDecoder().decode(APIErrorEnvelope.self, from: data).error.details) ?? [:]
     }
 
     private func validateJSON(response: HTTPURLResponse, data: Data) throws {
-        guard !data.isEmpty else {
-            throw APIError.incompatibleResponse
-        }
+        guard !data.isEmpty else { return }
         guard
             let contentType = response.value(forHTTPHeaderField: "Content-Type")?.lowercased(),
             contentType.contains("application/json")

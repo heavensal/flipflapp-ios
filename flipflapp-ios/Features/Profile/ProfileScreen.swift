@@ -1,14 +1,20 @@
+import PhotosUI
 import SwiftUI
 
 struct ProfileScreen: View {
-    let currentUser: CurrentUser
+    let session: SessionStore
 
     @State private var model: ProfileModel
     @State private var isConfirmingSignOut = false
+    @State private var selectedPhoto: PhotosPickerItem?
 
     init(api: APIClient, session: SessionStore, currentUser: CurrentUser) {
-        self.currentUser = currentUser
+        self.session = session
         _model = State(initialValue: ProfileModel(api: api, session: session, currentUser: currentUser))
+    }
+
+    private var currentUser: CurrentUser? {
+        session.currentUser
     }
 
     var body: some View {
@@ -18,20 +24,34 @@ struct ProfileScreen: View {
             Form {
                 Section {
                     HStack(spacing: 16) {
-                        AvatarView(user: currentUser.publicProfile, size: 64)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(currentUser.displayName)
-                                .font(.title3.bold())
-                            if let username = currentUser.username {
-                                Text(username)
-                                    .foregroundStyle(.secondary)
-                            }
-                            if currentUser.role == .admin {
-                                StatusPill(title: "Administrator", systemImage: "checkmark.seal.fill")
+                        if let user = currentUser {
+                            AvatarView(user: user.publicProfile, size: 64)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(user.displayName)
+                                    .font(.title3.bold())
+                                if let username = user.username {
+                                    Text(username)
+                                        .foregroundStyle(.secondary)
+                                }
+                                if user.role == .admin {
+                                    StatusPill(title: "Administrator", systemImage: "checkmark.seal.fill")
+                                }
                             }
                         }
                     }
                     .padding(.vertical, 6)
+
+                    PhotosPicker(selection: $selectedPhoto, matching: .images) {
+                        Label(String(localized: "Change photo"), systemImage: "photo")
+                    }
+                    .disabled(model.isUpdatingAvatar)
+
+                    if currentUser?.avatarURL != nil {
+                        Button(String(localized: "Remove photo"), role: .destructive) {
+                            Task { await model.removeAvatar() }
+                        }
+                        .disabled(model.isUpdatingAvatar)
+                    }
                 }
 
                 Section(String(localized: "Personal information")) {
@@ -44,6 +64,13 @@ struct ProfileScreen: View {
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
+                }
+
+                if let pendingEmailMessage = model.pendingEmailMessage {
+                    Section {
+                        Label(pendingEmailMessage, systemImage: "envelope.badge")
+                            .foregroundStyle(.orange)
+                    }
                 }
 
                 Section {
@@ -94,6 +121,17 @@ struct ProfileScreen: View {
                 }
             }
             .navigationTitle(String(localized: "Profile"))
+            .onChange(of: selectedPhoto) { _, newValue in
+                guard let newValue else { return }
+                Task {
+                    if let data = try? await newValue.loadTransferable(type: Data.self) {
+                        let mimeType = newValue.supportedContentTypes.first?.preferredMIMEType ?? "image/jpeg"
+                        let filename = newValue.supportedContentTypes.first?.preferredFilenameExtension.map { "avatar.\($0)" } ?? "avatar.jpg"
+                        await model.uploadAvatar(data: data, filename: filename, mimeType: mimeType)
+                    }
+                    selectedPhoto = nil
+                }
+            }
             .confirmationDialog(
                 String(localized: "Sign out of FlipFlapp?"),
                 isPresented: $isConfirmingSignOut,
