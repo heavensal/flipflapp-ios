@@ -41,7 +41,8 @@ struct ContentView: View {
                 environment: environment,
                 session: session,
                 currentUser: user,
-                deepLinkRouter: deepLinkRouter
+                deepLinkRouter: deepLinkRouter,
+                pushNavigationRouter: PushNavigationRouter.shared
             )
         }
     }

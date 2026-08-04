@@ -17,7 +17,6 @@ final class ProfileModel {
     private(set) var isSaving = false
     private(set) var isUploadingAvatar = false
     private(set) var isSigningOut = false
-    private(set) var isUpdatingAvatar = false
     var errorMessage: String?
     var successMessage: String?
     var fieldErrors: [String: String] = [:]
@@ -81,16 +80,14 @@ final class ProfileModel {
     }
 
     func uploadAvatar(data: Data, filename: String, mimeType: String) async {
-        guard !isUpdatingAvatar else { return }
-        isUpdatingAvatar = true
+        guard !isUploadingAvatar else { return }
+        isUploadingAvatar = true
         errorMessage = nil
-        defer { isUpdatingAvatar = false }
+        defer { isUploadingAvatar = false }
 
         do {
             let updated = try await api.updateCurrentUserAvatar(
-                data: data,
-                filename: filename,
-                mimeType: mimeType
+                AvatarUpload(data: data, filename: filename, mimeType: mimeType)
             )
             session.updateCurrentUser(updated)
             successMessage = String(localized: "Your profile photo has been updated.")
@@ -103,10 +100,10 @@ final class ProfileModel {
     }
 
     func removeAvatar() async {
-        guard !isUpdatingAvatar else { return }
-        isUpdatingAvatar = true
+        guard !isUploadingAvatar else { return }
+        isUploadingAvatar = true
         errorMessage = nil
-        defer { isUpdatingAvatar = false }
+        defer { isUploadingAvatar = false }
         do {
             let updated = try await api.removeCurrentUserAvatar()
             session.updateCurrentUser(updated)
@@ -180,5 +177,19 @@ final class ProfileModel {
             scaledImage = image
         }
         return scaledImage.jpegData(compressionQuality: quality)
+    }
+
+    private func applyValidation(_ error: APIError) {
+        fieldErrors = [:]
+        if let summary = error.validationSummary {
+            errorMessage = summary
+        } else {
+            errorMessage = error.localizedDescription
+        }
+        for field in ["first_name", "last_name", "email", "password", "password_confirmation"] {
+            if let message = error.fieldMessages(for: [field]).first {
+                fieldErrors[field] = message
+            }
+        }
     }
 }

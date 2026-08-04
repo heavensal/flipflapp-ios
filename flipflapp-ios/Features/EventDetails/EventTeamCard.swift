@@ -25,6 +25,13 @@ struct EventTeamCard: View {
         }
     }
 
+    private var isJoinDisabled: Bool {
+        if isMutating { return true }
+        if event.fillLevel == .full { return true }
+        if let capacity, participants.count >= capacity { return true }
+        return false
+    }
+
     var body: some View {
         CardSurface(tint: team.slot == .bench ? nil : tint) {
             VStack(alignment: .leading, spacing: layout == .versus ? 10 : 14) {
@@ -149,7 +156,7 @@ struct EventTeamCard: View {
             }
             .buttonStyle(.bordered)
             .tint(team.slot == .bench ? nil : tint)
-            .disabled(isMutating)
+            .disabled(isJoinDisabled)
         }
     }
 }

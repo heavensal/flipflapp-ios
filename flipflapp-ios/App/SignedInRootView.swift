@@ -5,6 +5,7 @@ struct SignedInRootView: View {
     let session: SessionStore
     let currentUser: CurrentUser
     let deepLinkRouter: AppDeepLinkRouter
+    let pushNavigationRouter: PushNavigationRouter
 
     @State private var badges = AppBadgeStore()
     @State private var selectedTab = 0
@@ -63,6 +64,25 @@ struct SignedInRootView: View {
             if let link = deepLinkRouter.consume() {
                 handleSignedInDeepLink(link)
             }
+            if let destination = pushNavigationRouter.consume() {
+                handlePushNavigation(destination)
+            }
+        }
+        .onChange(of: pushNavigationRouter.pending) { _, newValue in
+            guard let destination = newValue else { return }
+            handlePushNavigation(destination)
+        }
+    }
+
+    private func handlePushNavigation(_ destination: PushNavigationDestination) {
+        switch destination {
+        case let .events(eventID):
+            pendingEventID = eventID
+            selectedTab = 0
+        case .friends:
+            selectedTab = 1
+        case .notifications:
+            selectedTab = 2
         }
     }
 

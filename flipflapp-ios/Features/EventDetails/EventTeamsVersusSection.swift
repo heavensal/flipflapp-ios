@@ -6,7 +6,7 @@ struct EventTeamsVersusSection: View {
     let participants: (EventTeamID) -> [EventParticipant]
     let currentUserID: UserID
     let canRenameCountableTeams: Bool
-    let isMutating: Bool
+    let mutatingTeamID: EventTeamID?
     let join: (EventTeamID) -> Void
     let rename: (EventTeam) -> Void
 
@@ -63,8 +63,9 @@ struct EventTeamsVersusSection: View {
             participants: participants(team.id),
             capacity: event.officialCapacity(for: team.slot),
             currentUserID: currentUserID,
+            event: event,
             canRename: team.countable && canRenameCountableTeams,
-            isMutating: isMutating,
+            isMutating: mutatingTeamID == team.id,
             layout: layout,
             join: { join(team.id) },
             rename: { rename(team) }

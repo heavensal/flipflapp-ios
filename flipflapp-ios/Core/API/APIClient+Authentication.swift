@@ -127,6 +127,11 @@ extension APIClient {
         )
     }
 
+    func removeCurrentUserAvatar() async throws -> CurrentUser {
+        let body = try encode(Envelope(user: UserUpdateInput.removeAvatar))
+        return try await send(path: "api/v1/me", method: .patch, body: body)
+    }
+
     func user(id: UserID) async throws -> PublicUser {
         try await send(path: "api/v1/users/\(id.rawValue)", method: .get)
     }

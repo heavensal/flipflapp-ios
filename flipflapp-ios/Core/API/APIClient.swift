@@ -29,7 +29,6 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool = true,
         contentType: String? = nil
@@ -38,7 +37,6 @@ actor APIClient {
             path: path,
             method: method,
             body: body,
-            contentType: contentType,
             queryItems: queryItems,
             authenticated: authenticated,
             contentType: contentType
@@ -64,8 +62,8 @@ actor APIClient {
             path: path,
             method: method,
             body: body,
-            contentType: contentType,
-            authenticated: authenticated
+            authenticated: authenticated,
+            contentType: contentType
         )
     }
 
@@ -80,8 +78,8 @@ actor APIClient {
             path: path,
             method: method,
             body: body,
-            contentType: contentType,
-            authenticated: authenticated
+            authenticated: authenticated,
+            contentType: contentType
         )
         try validateJSON(response: response, data: data)
 
@@ -96,7 +94,6 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool,
         contentType: String? = nil

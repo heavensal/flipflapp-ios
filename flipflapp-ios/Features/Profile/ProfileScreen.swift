@@ -4,14 +4,9 @@ import SwiftUI
 struct ProfileScreen: View {
     @State private var model: ProfileModel
     @State private var isConfirmingSignOut = false
-    @State private var selectedPhoto: PhotosPickerItem?
 
     init(api: APIClient, session: SessionStore, currentUser: CurrentUser) {
         _model = State(initialValue: ProfileModel(api: api, session: session, currentUser: currentUser))
-    }
-
-    private var currentUser: CurrentUser? {
-        session.currentUser
     }
 
     var body: some View {
@@ -148,16 +143,8 @@ struct ProfileScreen: View {
                 }
             }
             .navigationTitle(String(localized: "Profile"))
-            .onChange(of: selectedPhoto) { _, newValue in
-                guard let newValue else { return }
-                Task {
-                    if let data = try? await newValue.loadTransferable(type: Data.self) {
-                        let mimeType = newValue.supportedContentTypes.first?.preferredMIMEType ?? "image/jpeg"
-                        let filename = newValue.supportedContentTypes.first?.preferredFilenameExtension.map { "avatar.\($0)" } ?? "avatar.jpg"
-                        await model.uploadAvatar(data: data, filename: filename, mimeType: mimeType)
-                    }
-                    selectedPhoto = nil
-                }
+            .onChange(of: model.selectedPhoto) { _, _ in
+                Task { await model.handleSelectedPhotoChange() }
             }
             .confirmationDialog(
                 String(localized: "Sign out of FlipFlapp?"),
@@ -168,9 +155,6 @@ struct ProfileScreen: View {
                     Task { await model.signOut() }
                 }
                 Button(String(localized: "Cancel"), role: .cancel) {}
-            }
-            .onChange(of: model.selectedPhoto) { _, _ in
-                Task { await model.handleSelectedPhotoChange() }
             }
         }
     }

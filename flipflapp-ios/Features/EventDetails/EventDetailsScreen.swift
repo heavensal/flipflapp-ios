@@ -155,7 +155,7 @@ struct EventDetailsScreen: View {
                     participants: snapshot.participants(in:),
                     currentUserID: currentUser.id,
                     canRenameCountableTeams: snapshot.event.currentUser?.participant == true,
-                    isMutating: model.isMutating,
+                    mutatingTeamID: model.mutatingTeamID,
                     join: { teamID in
                         Task { await model.join(teamID: teamID); onChanged() }
                     },

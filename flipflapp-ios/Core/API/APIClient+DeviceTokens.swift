@@ -18,23 +18,6 @@ extension APIClient {
             body: body
         )
     }
-
-    func updateCurrentUserAvatar(data: Data, filename: String, mimeType: String) async throws -> CurrentUser {
-        let form = MultipartFormData(parts: [
-            .file(name: "user[avatar]", filename: filename, mimeType: mimeType, data: data)
-        ])
-        return try await send(
-            path: "api/v1/me",
-            method: .patch,
-            body: form.body,
-            contentType: form.contentType
-        )
-    }
-
-    func removeCurrentUserAvatar() async throws -> CurrentUser {
-        let body = try encode(Envelope(user: UserUpdateInput.removeAvatar))
-        return try await send(path: "api/v1/me", method: .patch, body: body)
-    }
 }
 
 nonisolated private struct DeviceTokenEnvelope: Encodable, Sendable {

@@ -186,4 +186,8 @@ final class EventDetailsModel {
     func clearActionError() {
         actionErrorMessage = nil
     }
+
+    func isMutating(teamID: EventTeamID) -> Bool {
+        mutatingTeamID == teamID
+    }
 }
