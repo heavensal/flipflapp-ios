@@ -2,14 +2,11 @@ import PhotosUI
 import SwiftUI
 
 struct ProfileScreen: View {
-    let session: SessionStore
-
     @State private var model: ProfileModel
     @State private var isConfirmingSignOut = false
     @State private var selectedPhoto: PhotosPickerItem?
 
     init(api: APIClient, session: SessionStore, currentUser: CurrentUser) {
-        self.session = session
         _model = State(initialValue: ProfileModel(api: api, session: session, currentUser: currentUser))
     }
 
@@ -24,34 +21,63 @@ struct ProfileScreen: View {
             Form {
                 Section {
                     HStack(spacing: 16) {
-                        if let user = currentUser {
-                            AvatarView(user: user.publicProfile, size: 64)
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(user.displayName)
-                                    .font(.title3.bold())
-                                if let username = user.username {
-                                    Text(username)
-                                        .foregroundStyle(.secondary)
+                        PhotosPicker(
+                            selection: $model.selectedPhoto,
+                            matching: .images,
+                            photoLibrary: .shared()
+                        ) {
+                            ZStack(alignment: .bottomTrailing) {
+                                Group {
+                                    if let preview = model.localAvatarPreview {
+                                        Image(uiImage: preview)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 72, height: 72)
+                                            .clipShape(.circle)
+                                            .overlay {
+                                                Circle().stroke(.separator.opacity(0.5), lineWidth: 0.5)
+                                            }
+                                    } else {
+                                        AvatarView(user: model.displayedUser.publicProfile, size: 72)
+                                            .id(model.displayedUser.avatarURL?.absoluteString)
+                                    }
                                 }
-                                if user.role == .admin {
-                                    StatusPill(title: "Administrator", systemImage: "checkmark.seal.fill")
+                                .opacity(model.isUploadingAvatar ? 0.55 : 1)
+
+                                if model.isUploadingAvatar {
+                                    ProgressView()
+                                        .controlSize(.small)
+                                        .frame(width: 72, height: 72)
                                 }
+
+                                Image(systemName: "camera.circle.fill")
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(.white, Color.accentColor)
+                                    .font(.title2)
+                                    .accessibilityHidden(true)
+                            }
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel(String(localized: "Change profile photo"))
+                            .accessibilityHint(String(localized: "Opens your photo library"))
+                        }
+                        .disabled(model.isUploadingAvatar || model.isSaving)
+                        .buttonStyle(.plain)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(model.displayedUser.displayName)
+                                .font(.title3.bold())
+                            if let username = model.displayedUser.username {
+                                Text(username)
+                                    .foregroundStyle(.secondary)
+                            }
+                            if model.displayedUser.role == .admin {
+                                StatusPill(title: "Administrator", systemImage: "checkmark.seal.fill")
                             }
                         }
                     }
                     .padding(.vertical, 6)
-
-                    PhotosPicker(selection: $selectedPhoto, matching: .images) {
-                        Label(String(localized: "Change photo"), systemImage: "photo")
-                    }
-                    .disabled(model.isUpdatingAvatar)
-
-                    if currentUser?.avatarURL != nil {
-                        Button(String(localized: "Remove photo"), role: .destructive) {
-                            Task { await model.removeAvatar() }
-                        }
-                        .disabled(model.isUpdatingAvatar)
-                    }
+                } footer: {
+                    Text(String(localized: "Tap the photo to choose a new profile picture."))
                 }
 
                 Section(String(localized: "Personal information")) {
@@ -109,6 +135,7 @@ struct ProfileScreen: View {
                             || model.lastName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
                             || model.email.isEmpty
                             || model.isSaving
+                            || model.isUploadingAvatar
                     )
                 }
 
@@ -141,6 +168,9 @@ struct ProfileScreen: View {
                     Task { await model.signOut() }
                 }
                 Button(String(localized: "Cancel"), role: .cancel) {}
+            }
+            .onChange(of: model.selectedPhoto) { _, _ in
+                Task { await model.handleSelectedPhotoChange() }
             }
         }
     }

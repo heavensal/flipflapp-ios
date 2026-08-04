@@ -29,6 +29,7 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool = true,
         contentType: String? = nil
@@ -37,6 +38,7 @@ actor APIClient {
             path: path,
             method: method,
             body: body,
+            contentType: contentType,
             queryItems: queryItems,
             authenticated: authenticated,
             contentType: contentType
@@ -55,15 +57,15 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        authenticated: Bool = true,
-        contentType: String? = nil
+        contentType: String? = nil,
+        authenticated: Bool = true
     ) async throws {
         _ = try await perform(
             path: path,
             method: method,
             body: body,
-            authenticated: authenticated,
-            contentType: contentType
+            contentType: contentType,
+            authenticated: authenticated
         )
     }
 
@@ -71,15 +73,15 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
-        authenticated: Bool = true,
-        contentType: String? = nil
+        contentType: String? = nil,
+        authenticated: Bool = true
     ) async throws -> (Response, HTTPURLResponse) {
         let (data, response) = try await perform(
             path: path,
             method: method,
             body: body,
-            authenticated: authenticated,
-            contentType: contentType
+            contentType: contentType,
+            authenticated: authenticated
         )
         try validateJSON(response: response, data: data)
 
@@ -94,6 +96,7 @@ actor APIClient {
         path: String,
         method: HTTPMethod,
         body: Data? = nil,
+        contentType: String? = nil,
         queryItems: [URLQueryItem] = [],
         authenticated: Bool,
         contentType: String? = nil
@@ -114,7 +117,7 @@ actor APIClient {
         request.httpBody = body
         request.timeoutInterval = 30
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        if let body {
+        if body != nil {
             request.setValue(contentType ?? "application/json", forHTTPHeaderField: "Content-Type")
         }
         if authenticated {

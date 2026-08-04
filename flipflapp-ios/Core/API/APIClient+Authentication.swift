@@ -110,6 +110,23 @@ extension APIClient {
         return try await send(path: "api/v1/me", method: .patch, body: body)
     }
 
+    func updateCurrentUserAvatar(_ avatar: AvatarUpload) async throws -> CurrentUser {
+        var form = MultipartFormData()
+        form.appendFile(
+            name: "user[avatar]",
+            filename: avatar.filename,
+            mimeType: avatar.mimeType,
+            data: avatar.data
+        )
+        form.finish()
+        return try await send(
+            path: "api/v1/me",
+            method: .patch,
+            body: form.body,
+            contentType: form.contentType
+        )
+    }
+
     func user(id: UserID) async throws -> PublicUser {
         try await send(path: "api/v1/users/\(id.rawValue)", method: .get)
     }

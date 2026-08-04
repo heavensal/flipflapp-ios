@@ -27,11 +27,70 @@ struct EventEditorScreen: View {
                     TextField(String(localized: "Title"), text: $model.draft.title)
                     TextField(String(localized: "Description (optional)"), text: $model.draft.description, axis: .vertical)
                         .lineLimit(3...7)
-                    LocationSearchField(
-                        location: $model.draft.location,
-                        latitude: $model.draft.latitude,
-                        longitude: $model.draft.longitude
+                }
+
+                Section {
+                    TextField(
+                        String(localized: "Location"),
+                        text: Binding(
+                            get: { model.draft.location },
+                            set: { model.locationTextChanged($0) }
+                        ),
+                        axis: .vertical
                     )
+                    .textContentType(.fullStreetAddress)
+                    .lineLimit(2...4)
+                    .disabled(model.addressAutocomplete.isResolving)
+
+                    if model.addressAutocomplete.isResolving {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            Text(String(localized: "Looking up address…"))
+                                .foregroundStyle(.secondary)
+                        }
+                        .accessibilityElement(children: .combine)
+                    }
+
+                    ForEach(model.addressAutocomplete.suggestions) { suggestion in
+                        Button {
+                            model.selectSuggestion(suggestion)
+                        } label: {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(suggestion.title)
+                                    .foregroundStyle(.primary)
+                                if !suggestion.subtitle.isEmpty {
+                                    Text(suggestion.subtitle)
+                                        .font(.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(accessibilityLabel(for: suggestion))
+                    }
+
+                    if model.draft.hasResolvedCoordinates {
+                        Label(String(localized: "Address selected"), systemImage: "checkmark.circle.fill")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .accessibilityLabel(String(localized: "Address selected"))
+
+                        if let latitude = parseDraftCoordinate(model.draft.latitude),
+                           let longitude = parseDraftCoordinate(model.draft.longitude) {
+                            EventLocationPreviewMap(
+                                latitude: latitude,
+                                longitude: longitude,
+                                title: model.draft.location
+                            )
+                            .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 4, trailing: 0))
+                        }
+                    }
+                } header: {
+                    Text(String(localized: "Location"))
+                } footer: {
+                    Text(locationFooterText)
                 }
 
                 Section(String(localized: "Schedule")) {
@@ -60,7 +119,7 @@ struct EventEditorScreen: View {
                     Text(String(localized: "The server decides who can view private events based on friendships, participation and invitations."))
                 }
 
-                if let errorMessage = model.errorMessage {
+                if let errorMessage = model.errorMessage ?? model.addressAutocomplete.resolveErrorMessage {
                     Section { InlineErrorView(message: errorMessage) }
                 }
             }
@@ -80,9 +139,29 @@ struct EventEditorScreen: View {
                             dismiss()
                         }
                     }
-                    .disabled(model.isSubmitting)
+                    .disabled(model.isSubmitting || model.addressAutocomplete.isResolving)
                 }
             }
         }
+    }
+
+    private var locationFooterText: String {
+        if model.draft.hasResolvedCoordinates {
+            String(localized: "Coordinates are filled automatically from the selected address.")
+        } else {
+            String(localized: "Start typing, then choose an address from the suggestions.")
+        }
+    }
+
+    private func accessibilityLabel(for suggestion: AddressSuggestion) -> String {
+        if suggestion.subtitle.isEmpty {
+            return suggestion.title
+        }
+        return "\(suggestion.title), \(suggestion.subtitle)"
+    }
+
+    private func parseDraftCoordinate(_ value: String) -> Decimal? {
+        Decimal(string: value, locale: .current)
+            ?? Decimal(string: value, locale: Locale(identifier: "en_US_POSIX"))
     }
 }
